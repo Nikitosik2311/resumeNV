@@ -1,583 +1,577 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Никита Васильев — Интернет-маркетолог</title>
-<style>
-  /* Базовые стили и темный фон */
-  body {
-    margin: 0;
-    background-color: #121212;
-    color: #e0e0e0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  a {
-    color: #82cfff;
-    text-decoration: none;
-  }
-  a:hover, a:focus {
-    text-decoration: underline;
-    outline: none;
-  }
-
-  nav {
-    background-color: #121212;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: center;
-    border-bottom: 1px solid #222;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-  }
-  nav a {
-    color: #82cfff;
-    text-decoration: none;
-    font-weight: 600;
-    margin: 0 15px;
-    padding: 6px 10px;
-    border-radius: 6px;
-    transition: background-color 0.3s, color 0.3s;
-    user-select: none;
-  }
-  nav a.active,
-  nav a:hover,
-  nav a:focus {
-    background-color: #82cfff;
-    color: #121212;
-    outline: none;
-  }
-
-  .resume-container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-
-  aside.sidebar {
-    flex: 1 1 280px;
-    background-color: #1e1e1e;
-    border-radius: 10px;
-    padding: 20px;
-  }
-  .avatar {
-    width: 100%;
-    max-width: 220px;
-    border-radius: 50%;
-    display: block;
-    margin: 0 auto 15px;
-    border: 3px solid #82cfff;
-  }
-  .name {
-    text-align: center;
-    font-size: 1.8rem;
-    margin-bottom: 5px;
-    font-weight: 700;
-    color: #82cfff;
-  }
-  .title {
-    text-align: center;
-    font-size: 1.1rem;
-    margin-bottom: 20px;
-    font-weight: 500;
-    color: #a0a0a0;
-  }
-  section h2 {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-    color: #82cfff;
-    border-bottom: 1px solid #444;
-    padding-bottom: 5px;
-  }
-  .contact-list,
-  ul {
-    padding-left: 20px;
-    margin: 0 0 15px 0;
-  }
-  .contact-list li,
-  ul li {
-    margin-bottom: 8px;
-    font-size: 0.95rem;
-  }
-  .salary, .job-type {
-    font-weight: 600;
-    color: #a0a0a0;
-    margin-bottom: 15px;
-    padding-left: 0;
-  }
-
-  main.content {
-    flex: 2 1 580px;
-    background-color: #1e1e1e;
-    border-radius: 10px;
-    padding: 20px;
-  }
-  main.content section {
-    margin-bottom: 25px;
-  }
-  main.content h2 {
-    font-size: 1.4rem;
-    margin-bottom: 15px;
-    color: #82cfff;
-    border-bottom: 1px solid #444;
-    padding-bottom: 8px;
-  }
-  main.content h3 {
-    font-size: 1.1rem;
-    margin-bottom: 5px;
-    color: #a0d8ff;
-  }
-  main.content p,
-  main.content ul {
-    font-size: 1rem;
-    margin-bottom: 10px;
-    color: #d0d0d0;
-  }
-  main.content ul {
-    padding-left: 20px;
-    list-style: disc;
-  }
-
-  /* Кнопки подробнее */
-  .btn-experience {
-    background-color: #2a2a2a;
-    border: 1.5px solid #82cfff;
-    color: #82cfff;
-    padding: 10px 22px;
-    margin-top: 10px;
-    border-radius: 6px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
-    user-select: none;
-    white-space: nowrap;
-  }
-  .btn-experience:hover,
-  .btn-experience:focus {
-    background-color: #82cfff;
-    color: #121212;
-    outline: none;
-  }
-  .experience-desc {
-    margin-top: 12px;
-    color: #c0c0c0;
-    font-size: 0.95rem;
-    line-height: 1.4;
-    display: none;
-  }
-  .experience-desc.active {
-    display: block;
-  }
-
-  /* Прогресс-бары */
-  .progress-bar {
-    background: #333;
-    border-radius: 10px;
-    height: 10px;
-    width: 100%;
-    margin: 10px 0 5px 0;
-    overflow: hidden;
-  }
-  .progress {
-    height: 100%;
-    background: linear-gradient(90deg, #82cfff, #4eaaff);
-    border-radius: 10px 0 0 10px;
-    width: 0;
-    transition: width 2s ease;
-  }
-  .progress-label {
-    font-size: 0.85rem;
-    color: #8fcfff;
-    margin-bottom: 10px;
-  }
-
-  /* Временная линия */
-  .timeline {
-    position: relative;
-    margin: 40px 0 20px;
-    padding-left: 20px;
-    padding-right: 20px;
-    display: flex;
-    justify-content: space-between;
-    max-width: 100%;
-    overflow-x: auto;
-  }
-  .timeline::before {
-    content: '';
-    position: absolute;
-    top: 15px;
-    left: 10px;
-    right: 10px;
-    height: 3px;
-    background: #444;
-    border-radius: 2px;
-    z-index: 1;
-  }
-  .timeline-point {
-    position: relative;
-    flex: 0 0 auto;
-    background: #2a2a2a;
-    color: #82cfff;
-    padding: 8px 14px;
-    border-radius: 20px;
-    cursor: pointer;
-    user-select: none;
-    z-index: 2;
-    transition: background-color 0.3s, color 0.3s;
-    white-space: nowrap;
-    font-weight: 600;
-    border: 2px solid transparent;
-  }
-  .timeline-point.active,
-  .timeline-point:hover,
-  .timeline-point:focus {
-    background-color: #82cfff;
-    color: #121212;
-    border-color: #82cfff;
-    outline: none;
-  }
-
-  /* Скроллбар для временной линии */
-  .timeline::-webkit-scrollbar {
-    height: 8px;
-  }
-  .timeline::-webkit-scrollbar-track {
-    background: #1e1e1e;
-  }
-  .timeline::-webkit-scrollbar-thumb {
-    background: #82cfff;
-    border-radius: 4px;
-  }
-
-  /* Адаптив */
-  @media (max-width: 720px) {
-    .resume-container {
-      flex-direction: column;
-      padding: 15px;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Никита Васильев — Интернет-маркетолог</title>
+  <style>
+    /* Общие стили и тёмная тема */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #121212;
+      color: #e0e0e0;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
-    aside.sidebar,
-    main.content {
-      flex: 1 1 100%;
+    a {
+      color: #82cfff;
+      text-decoration: none;
+    }
+    a:hover, a:focus {
+      text-decoration: underline;
+      outline: none;
+    }
+    h1, h2, h3 {
+      margin-top: 0;
+      font-weight: 700;
+      color: #ffffff;
+    }
+    h1 {
+      font-size: 2.4rem;
+    }
+    h2 {
+      font-size: 1.8rem;
+      border-bottom: 2px solid #004bb5;
+      padding-bottom: 6px;
+      margin-bottom: 16px;
+    }
+    h3 {
+      font-size: 1.3rem;
+      margin-bottom: 8px;
+      color: #82cfff;
+    }
+    p, ul, li {
+      font-size: 1rem;
+    }
+    ul {
+      padding-left: 20px;
+      margin-top: 0;
+      margin-bottom: 16px;
+    }
+    li {
+      margin-bottom: 6px;
+    }
+
+    /* Контейнер */
+    .resume-container {
+      max-width: 1100px;
+      margin: 20px auto 40px;
+      display: flex;
+      gap: 40px;
+      padding: 0 15px;
+    }
+
+    /* Левая колонка */
+    .sidebar {
+      flex: 1 1 280px;
+      background: #1e1e1e;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 0 15px rgba(0, 75, 181, 0.5);
+    }
+    .avatar {
+      width: 100%;
+      max-width: 220px;
+      border-radius: 50%;
+      display: block;
+      margin: 0 auto 20px;
+      border: 3px solid #004bb5;
+    }
+    .name {
+      text-align: center;
+      font-weight: 800;
+      font-size: 2.2rem;
+      margin-bottom: 4px;
+      color: #82cfff;
+    }
+    .title {
+      text-align: center;
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-bottom: 24px;
+      color: #a0cfff;
+    }
+    .sidebar section {
+      margin-bottom: 24px;
+    }
+    .contact-list li {
+      margin-bottom: 10px;
+      font-weight: 500;
+      color: #cfd8dc;
+    }
+    .salary, .job-type {
+      font-weight: 600;
+      color: #82cfff;
+      margin-top: 8px;
+    }
+
+    /* Правая колонка */
+    .content {
+      flex: 2 1 600px;
+      background: #1e1e1e;
+      border-radius: 12px;
+      padding: 32px 36px;
+      box-shadow: 0 0 15px rgba(0, 75, 181, 0.5);
+    }
+    .content section + section {
+      margin-top: 32px;
+    }
+
+    /* Навигация */
+    nav {
+      display: flex;
+      justify-content: center;
+      background: #004bb5;
+      padding: 12px 0;
+      margin-bottom: 20px;
+      border-radius: 0 0 12px 12px;
+      box-shadow: 0 4px 12px rgba(0, 75, 181, 0.6);
+      user-select: none;
     }
     nav a {
-      margin: 0 8px;
-      padding: 6px 8px;
-      font-size: 0.9rem;
+      color: #c6e0ff;
+      font-weight: 700;
+      font-size: 1rem;
+      margin: 0 20px;
+      padding: 8px 16px;
+      border-radius: 8px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      white-space: nowrap;
+      text-decoration: none;
     }
+    nav a:hover, nav a:focus, nav a.active {
+      background: #082a72;
+      color: #82cfff;
+      outline: none;
+      cursor: pointer;
+    }
+
+    /* Опыт - временная линия */
     .timeline {
-      padding-left: 10px;
-      padding-right: 10px;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 24px;
+      overflow-x: auto;
+      padding-bottom: 10px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+      scrollbar-color: #004bb5 transparent;
     }
-  }
-</style>
+    .timeline::-webkit-scrollbar {
+      height: 8px;
+    }
+    .timeline::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .timeline::-webkit-scrollbar-thumb {
+      background-color: #004bb5;
+      border-radius: 20px;
+    }
+    .timeline-point {
+      flex: 0 0 auto;
+      background: #2a2a2a;
+      color: #a0cfff;
+      padding: 10px 18px;
+      border-radius: 14px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.9rem;
+      box-shadow: 0 0 8px transparent;
+      user-select: none;
+      transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+      white-space: nowrap;
+      text-align: center;
+      outline-offset: 3px;
+    }
+    .timeline-point small {
+      display: block;
+      font-size: 0.75rem;
+      margin-top: 4px;
+      color: #6795d0;
+    }
+    .timeline-point.active,
+    .timeline-point:focus,
+    .timeline-point:hover {
+      background: #004bb5;
+      color: #ffffff;
+      box-shadow: 0 0 15px #004bb5aa;
+      outline: none;
+    }
+
+    /* Опыт - элементы */
+    .timeline-item {
+      margin-bottom: 36px;
+    }
+    .timeline-item[hidden] {
+      display: none;
+    }
+    .experience-desc {
+      margin-top: 12px;
+      font-size: 0.95rem;
+      color: #cfd8dc;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.4s ease;
+      padding-left: 14px;
+    }
+    .experience-desc.active {
+      max-height: 2000px; /* достаточно большое значение для раскрытия */
+      padding-left: 24px;
+      margin-top: 12px;
+    }
+    .experience-desc ul {
+      padding-left: 20px;
+    }
+    .experience-desc li {
+      margin-bottom: 6px;
+    }
+
+    /* Кнопки подробнее */
+    .btn-experience {
+      background: linear-gradient(135deg, #0066ff 0%, #004bb5 100%);
+      border: none;
+      color: #fff;
+      padding: 14px 28px;
+      font-weight: 700;
+      font-size: 1.05rem;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0, 102, 255, 0.6);
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
+      user-select: none;
+      white-space: nowrap;
+      margin-top: 12px;
+    }
+    .btn-experience:hover,
+    .btn-experience:focus {
+      background: linear-gradient(135deg, #004bb5 0%, #003680 100%);
+      box-shadow: 0 6px 20px rgba(0, 75, 181, 0.9);
+      transform: translateY(-2px);
+      outline: none;
+    }
+
+    /* Прогресс бары */
+    .progress-bar {
+      background: #2a2a2a;
+      border-radius: 20px;
+      height: 14px;
+      margin: 14px 0 6px;
+      overflow: hidden;
+    }
+    .progress {
+      background: #82cfff;
+      height: 100%;
+      width: 0;
+      border-radius: 20px;
+      transition: width 1.2s ease;
+    }
+    .progress-label {
+      font-size: 0.85rem;
+      color: #a0cfff;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    /* Секции Навыков и Контактов */
+    #skills ul, #contact ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    #skills li, #contact li {
+      padding-left: 0;
+      margin-bottom: 10px;
+    }
+
+    /* Ссылки Телеграм */
+    .telegram-link {
+      color: #82cfff;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .telegram-link:hover, .telegram-link:focus {
+      text-decoration: underline;
+      outline: none;
+    }
+
+    /* Адаптив */
+    @media (max-width: 900px) {
+      .resume-container {
+        flex-direction: column;
+        padding-bottom: 50px;
+      }
+      .sidebar {
+        max-width: 100%;
+        margin-bottom: 30px;
+      }
+      .content {
+        max-width: 100%;
+        padding: 24px;
+      }
+      .timeline {
+        justify-content: flex-start;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<nav>
-  <a href="#about" class="active">О себе</a>
-  <a href="#experience">Опыт работы</a>
-  <a href="#skills">Навыки и Курсы</a>
-  <a href="#contact">Контакты</a>
-</nav>
+  <nav role="navigation" aria-label="Основное меню">
+    <a href="#about" class="active" tabindex="0">О себе</a>
+    <a href="#experience" tabindex="0">Опыт работы</a>
+    <a href="#skills" tabindex="0">Навыки и курсы</a>
+    <a href="#contact" tabindex="0">Контакты</a>
+  </nav>
 
-<div class="resume-container">
+  <div class="resume-container">
 
-  <aside class="sidebar" role="complementary" aria-label="Боковая панель с личной информацией">
-    <img src="avatar.png" alt="Фото Никиты Васильева" class="avatar" />
-    <h1 class="name">Никита Васильев</h1>
-    <p class="title">Интернет-маркетолог</p>
+    <aside class="sidebar" role="complementary" aria-label="Контактная информация и навыки">
+      <img src="avatar.png" alt="Фото Никиты Васильева" class="avatar" />
+      <h1 class="name">Никита Васильев</h1>
+      <p class="title">Интернет-маркетолог</p>
 
-    <section>
-      <h2>Контакты</h2>
-      <ul class="contact-list">
-        <li>📞 8-(985)-422-97-39</li>
-        <li>📧 Vasilevnik05@mail.ru</li>
-        <li>💬 <a href="https://t.me/vnezap11" target="_blank" rel="noopener noreferrer" style="color:#82cfff; text-decoration:none;">Мой Telegram</a></li>
-        <li>📍 Москва</li>
-      </ul>
-      <p class="salary">💰 От 100 000 руб</p>
-      <p class="job-type">🕒 Готов к FullTime удалённой работе (без офиса)</p>
-    </section>
+      <section>
+        <h2>Контакты</h2>
+        <ul class="contact-list">
+          <li>📞 8-(985)-422-97-39</li>
+          <li>📧 Vasilevnik05@mail.ru</li>
+          <li>💬 <a href="https://t.me/vnezap11" target="_blank" rel="noopener noreferrer" class="telegram-link">Мой Telegram</a></li>
+          <li>📍 Москва</li>
+        </ul>
+        <p class="salary">💰 От 100 000 руб</p>
+        <p class="job-type">🕒 Fulltime, удалённая работа (без офиса)</p>
+      </section>
 
-    <section>
-      <h2>Языки</h2>
-      <p>Английский — B1</p>
-    </section>
+      <section>
+        <h2>Языки</h2>
+        <p>Английский — B1</p>
+      </section>
 
-    <section>
-      <h2>Качества</h2>
-      <ul>
-        <li>Стратегическое мышление</li>
-        <li>Ответственность и инициативность</li>
-        <li>Коммуникабельность</li>
-        <li>Управление командой</li>
-      </ul>
-    </section>
+      <section id="skills" tabindex="0" aria-label="Навыки и курсы">
+        <h2>Навыки</h2>
+        <ul>
+          <li>Таргетированная реклама (VK, Яндекс, Telegram)</li>
+          <li>Яндекс.Метрика, GA4</li>
+          <li>Работа с CPA-сетями (Admitad, Cityads)</li>
+          <li>Контент-маркетинг, VC.ru, Дзен</li>
+          <li>CRM: Bitrix24, AmoCRM, HubSpot</li>
+          <li>Figma, создание макетов</li>
+          <li>Коммерческие предложения</li>
+          <li>Программы лояльности</li>
+        </ul>
 
-    <section>
-      <h2>Хобби</h2>
-      <p>Спортзал, чтение книг</p>
-    </section>
-  </aside>
+        <h2>Курсы</h2>
+        <ul>
+          <li>Интернет-маркетинг — Intelsib</li>
+          <li>Маркетинговые исследования — MAED</li>
+          <li>Таргетированная реклама — Эдуард Мухин</li>
+          <li>Медиапланирование — Филипп Царевский</li>
+          <li>Agile / Scrum — Coursera (лучший курс)</li>
+        </ul>
+      </section>
+    </aside>
 
-  <main class="content" role="main">
-    <section id="about" tabindex="0" aria-label="О себе">
-      <h2>О себе</h2>
-      <p>Опытный интернет-маркетолог с более чем 3-летним стажем. Специализируюсь на привлечении трафика, оптимизации воронок, аналитике и партнёрском маркетинге. Умею стратегически мыслить, работать в команде и масштабировать проекты.</p>
-    </section>
+    <main class="content" role="main">
+      <section id="about" tabindex="0" aria-label="О себе">
+        <h2>О себе</h2>
+        <p>
+          Опытный интернет-маркетолог с более чем 3-летним стажем. Специализируюсь на привлечении трафика, оптимизации воронок, аналитике и партнёрском маркетинге.
+          Умею стратегически мыслить, работать в команде и масштабировать проекты. Готов к Fulltime, удалённой работе без офиса.
+        </p>
+      </section>
 
-    <section id="experience" tabindex="0" aria-label="Опыт работы">
-      <h2>Опыт работы</h2>
+      <section id="experience" tabindex="0" aria-label="Опыт работы">
+        <h2>Опыт работы</h2>
 
-      <!-- Временная линия -->
-      <div class="timeline" role="list" aria-label="Временная линия опыта работы">
-        <div class="timeline-point active" tabindex="0" data-target="yamdiet-desc" aria-selected="true">Yamdiet<br><small>04.2024 - 06.2025</small></div>
-        <div class="timeline-point" tabindex="0" data-target="jobarabist-desc" aria-selected="false">Job for Arabists<br><small>05.2023 - 03.2024</small></div>
-        <div class="timeline-point" tabindex="0" data-target="producer-desc" aria-selected="false">Онлайн-школа<br><small>08.2022 - 05.2023</small></div>
-        <div class="timeline-point" tabindex="0" data-target="freelance-desc" aria-selected="false">Фриланс<br><small>02.2022 - 08.2022</small></div>
-      </div>
-
-      <!-- Опыт Yamdiet -->
-      <article class="timeline-item" role="listitem" aria-expanded="true" aria-controls="yamdiet-desc">
-        <h3>Трафик-менеджер — Компания Yamdiet</h3>
-        <time datetime="2024-04 to 2025-06">Апрель 2024 — Июнь 2025 (1 год 3 месяца)</time>
-        <button class="btn-experience" aria-expanded="true" aria-controls="yamdiet-desc" aria-label="Подробнее про опыт работы в Yamdiet" onclick="toggleDesc('yamdiet-desc', this)">Подробнее</button>
-        <div id="yamdiet-desc" class="experience-desc active" >
-          <ul>
-            <li>Настройка таргетированной рекламы (ВК, Яндекс директ, РСЯ)</li>
-            <li>Работа с Яндекс метрикой</li>
-            <li>Работа с CPA-сетями (Admitad, cityads, bestbenefits)</li>
-            <li>Работа с партнерами</li>
-            <li>Продвижение Т-банк бизнес, Альфа таргет</li>
-            <li>Работа со статьями на Дзен, VC.RU</li>
-            <li>Работа с CRM системой, выгрузкой отчетов, анализ отчётов</li>
-            <li>Работа с дизайнерами, навыки в Figma (любительский уровень)</li>
-            <li>Создание КП для партнеров</li>
-            <li>Работа с CEO по стратегии расширения органического трафика</li>
-            <li>Оценка качества взаимодействия с клиентами (скорость ответа, понятность интерфейса, выбранные сервисы)</li>
-            <li>Проведение ревизии всех точек контакта (сайт, приложение, email, соцсети, доставка, телефоны клиентов)</li>
-            <li>Работа с программой лояльности</li>
-          </ul>
-          <div class="progress-bar">
-            <div class="progress" data-progress="43%"></div>
-          </div>
-          <div class="progress-label">Увеличение трафика: 43%</div>
-          <div class="progress-bar">
-            <div class="progress" data-progress="38%"></div>
-          </div>
-          <div class="progress-label">Рост конверсии: 38%</div>
+        <div class="timeline" role="list" aria-label="Временная линия опыта работы">
+          <div class="timeline-point active" tabindex="0" data-target="yamdiet-desc" aria-selected="true">Yamdiet<br><small>04.2024 - 06.2025</small></div>
+          <div class="timeline-point" tabindex="0" data-target="jobarabist-desc" aria-selected="false">Job for Arabists<br><small>05.2023 - 03.2024</small></div>
+          <div class="timeline-point" tabindex="0" data-target="producer-desc" aria-selected="false">Онлайн-школа<br><small>08.2022 - 05.2023</small></div>
+          <div class="timeline-point" tabindex="0" data-target="freelance-desc" aria-selected="false">Фриланс<br><small>02.2022 - 08.2022</small></div>
         </div>
-      </article>
 
-      <!-- Опыт Job for Arabists -->
-      <article class="timeline-item" role="listitem" aria-expanded="false" aria-controls="jobarabist-desc" hidden>
-        <h3>Digital-маркетолог — Компания Job for Arabists</h3>
-        <time datetime="2023-05 to 2024-03">Май 2023 — Март 2024 (11 месяцев)</time>
-        <button class="btn-experience" aria-expanded="false" aria-controls="jobarabist-desc" aria-label="Подробнее про опыт работы в Job for Arabists" onclick="toggleDesc('jobarabist-desc', this)">Подробнее</button>
-        <div id="jobarabist-desc" class="experience-desc">
-          <ul>
-            <li>Разработка маркетинговой стратегии</li>
-            <li>Продвижение (Таргет ВК, Яндекс директ, ТГ Ads, посевы, FB)</li>
-            <li>Разработка карт CJM, Service BluePrint</li>
-            <li>Анализ конкурентов</li>
-            <li>Отчётность в конце периода</li>
-            <li>Упаковка посадочных страниц</li>
-            <li>Поиск и работа с подрядчиками, составление ТЗ</li>
-            <li>Разработка и анализ воронок продаж</li>
-            <li>Работа с чат-ботами, подписными страницами (Senler)</li>
-            <li>Работа в Miro, Excel</li>
-            <li>Навык дизайна Ui/Ux в Figma</li>
-          </ul>
-          <div class="progress-bar">
-            <div class="progress" data-progress="28%"></div>
+        <article class="timeline-item" role="listitem" aria-expanded="true" aria-controls="yamdiet-desc">
+          <h3>Трафик-менеджер — Компания Yamdiet</h3>
+          <time datetime="2024-04 to 2025-06">Апрель 2024 — Июнь 2025 (1 год 3 месяца)</time>
+          <button class="btn-experience" aria-expanded="true" aria-controls="yamdiet-desc" aria-label="Подробнее про опыт работы в Yamdiet" onclick="toggleDesc('yamdiet-desc', this)">Подробнее</button>
+          <div id="yamdiet-desc" class="experience-desc active">
+            <ul>
+              <li>Настройка таргетированной рекламы (ВК, Яндекс директ, РСЯ)</li>
+              <li>Работа с Яндекс метрикой</li>
+              <li>Работа с CPA-сетями (Admitad, cityads, bestbenefits)</li>
+              <li>Работа с партнерами</li>
+              <li>Продвижение Т-банк бизнес, Альфа таргет</li>
+              <li>Работа со статьями на Дзен, VC.RU</li>
+              <li>Работа с CRM системой, выгрузкой отчетов, анализ отчётов</li>
+              <li>Работа с дизайнерами, навыки в Figma (любительский уровень)</li>
+              <li>Создание КП для партнеров</li>
+              <li>Работа с CEO по стратегии расширения органического трафика</li>
+              <li>Оценка качества взаимодействия с клиентами (скорость ответа, понятность интерфейса, выбранные сервисы)</li>
+              <li>Проведение ревизии всех точек контакта (сайт, приложение, email, соцсети, доставка, телефоны клиентов)</li>
+              <li>Работа с программой лояльности</li>
+            </ul>
+            <div class="progress-bar">
+              <div class="progress" data-progress="43%"></div>
+            </div>
+            <div class="progress-label">Увеличение трафика: 43%</div>
+            <div class="progress-bar">
+              <div class="progress" data-progress="38%"></div>
+            </div>
+            <div class="progress-label">Рост конверсии: 38%</div>
           </div>
-          <div class="progress-label">Увеличение трафика: 28%</div>
-          <div class="progress-bar">
-            <div class="progress" data-progress="25%"></div>
+        </article>
+
+        <article class="timeline-item" role="listitem" aria-expanded="false" aria-controls="jobarabist-desc" hidden>
+          <h3>Digital-маркетолог — Компания Job for Arabists</h3>
+          <time datetime="2023-05 to 2024-03">Май 2023 — Март 2024 (11 месяцев)</time>
+          <button class="btn-experience" aria-expanded="false" aria-controls="jobarabist-desc" aria-label="Подробнее про опыт работы в Job for Arabists" onclick="toggleDesc('jobarabist-desc', this)">Подробнее</button>
+          <div id="jobarabist-desc" class="experience-desc">
+            <ul>
+              <li>Разработка маркетинговой стратегии</li>
+              <li>Продвижение (Таргет ВК, Яндекс директ, ТГ Ads, посевы, FB)</li>
+              <li>Разработка карт CJM, Service BluePrint</li>
+              <li>Анализ конкурентов</li>
+              <li>Отчётность в конце периода</li>
+              <li>Упаковка посадочных страниц</li>
+              <li>Поиск и работа с подрядчиками, составление ТЗ</li>
+              <li>Разработка воронок продаж и анализ воронок</li>
+              <li>Работа с чат-ботами, подписными страницами (Senler)</li>
+              <li>Работа в Miro, Excel</li>
+              <li>Навык дизайна Ui/Ux в Figma</li>
+            </ul>
+            <div class="progress-bar">
+              <div class="progress" data-progress="28%"></div>
+            </div>
+            <div class="progress-label">Увеличение трафика: 28%</div>
+            <div class="progress-bar">
+              <div class="progress" data-progress="25%"></div>
+            </div>
+            <div class="progress-label">Увеличение конверсии: 25%</div>
           </div>
-          <div class="progress-label">Увеличение конверсии: 25%</div>
-        </div>
-      </article>
+        </article>
 
-      <!-- Опыт Продюсер -->
-      <article class="timeline-item" role="listitem" aria-expanded="false" aria-controls="producer-desc" hidden>
-        <h3>Продюсер онлайн-школы — Фриланс проект</h3>
-        <time datetime="2022-08 to 2023-05">Август 2022 — Май 2023 (10 месяцев)</time>
-        <button class="btn-experience" aria-expanded="false" aria-controls="producer-desc" aria-label="Подробнее про опыт Продюсера" onclick="toggleDesc('producer-desc', this)">Подробнее</button>
-        <div id="producer-desc" class="experience-desc">
-          <ul>
-            <li>Полный запуск инфопродуктов</li>
-            <li>Написание контент-плана</li>
-            <li>Разработка стратегии запуска</li>
-            <li>Работа и поиск подрядчиков, составление ТЗ</li>
-            <li>Разработка посадочных страниц</li>
-            <li>Техническая настройка вебинаров</li>
-            <li>Написание продающих текстов</li>
-            <li>Настройка таргетированной рекламы</li>
-            <li>Посевы и настройка Яндекс Директ/РСЯ/Контекст</li>
-            <li>Работа с TG Ads и подключение платёжных систем</li>
-            <li>Расчёт декомпозиции запуска</li>
-          </ul>
-          <div class="progress-bar">
-            <div class="progress" data-progress="32%"></div>
+        <article class="timeline-item" role="listitem" aria-expanded="false" aria-controls="producer-desc" hidden>
+          <h3>Продюсер онлайн-школы — Фриланс проект</h3>
+          <time datetime="2022-08 to 2023-05">Август 2022 — Май 2023 (10 месяцев)</time>
+          <button class="btn-experience" aria-expanded="false" aria-controls="producer-desc" aria-label="Подробнее про опыт Продюсера" onclick="toggleDesc('producer-desc', this)">Подробнее</button>
+          <div id="producer-desc" class="experience-desc">
+            <ul>
+              <li>Полный запуск инфопродуктов</li>
+              <li>Написание контент-плана</li>
+              <li>Разработка стратегии запуска</li>
+              <li>Работа и поиск подрядчиков, составление ТЗ</li>
+              <li>Разработка посадочных страниц</li>
+              <li>Техническая настройка вебинаров</li>
+              <li>Написание продающих текстов</li>
+              <li>Настройка таргетированной рекламы (ВК, Яндекс директ, РСЯ)</li>
+              <li>Посевы и настройка Яндекс Директ / РСЯ / Контекстная реклама</li>
+              <li>Работа с TG Ads</li>
+              <li>Подключение платёжных систем</li>
+              <li>Расчёт декомпозиции запуска</li>
+            </ul>
+            <div class="progress-bar">
+              <div class="progress" data-progress="32%"></div>
+            </div>
+            <div class="progress-label">Рост подписчиков: 32%</div>
+            <div class="progress-bar">
+              <div class="progress" data-progress="28%"></div>
+            </div>
+            <div class="progress-label">Увеличение продаж: 28%</div>
           </div>
-          <div class="progress-label">Рост подписчиков: 32%</div>
-          <div class="progress-bar">
-            <div class="progress" data-progress="28%"></div>
+        </article>
+
+        <article class="timeline-item" role="listitem" aria-expanded="false" aria-controls="freelance-desc" hidden>
+          <h3>Таргетолог / Директолог / Контекстолог — Фриланс</h3>
+          <time datetime="2022-02 to 2022-08">Февраль 2022 — Август 2022 (7 месяцев)</time>
+          <button class="btn-experience" aria-expanded="false" aria-controls="freelance-desc" aria-label="Подробнее про опыт работы на фрилансе" onclick="toggleDesc('freelance-desc', this)">Подробнее</button>
+          <div id="freelance-desc" class="experience-desc">
+            <ul>
+              <li>Настройка таргетированной рекламы ВК, Яндекс директ, РСЯ</li>
+              <li>Контекстная реклама и анализ</li>
+              <li>Оптимизация бюджета и повышение ROI</li>
+              <li>Работа с CPA-сетями</li>
+              <li>Создание коммерческих предложений</li>
+              <li>Аналитика, A/B тесты</li>
+              <li>Настройка и ведение рекламных кампаний</li>
+            </ul>
+            <div class="progress-bar">
+              <div class="progress" data-progress="35%"></div>
+            </div>
+            <div class="progress-label">Увеличение трафика: 35%</div>
+            <div class="progress-bar">
+              <div class="progress" data-progress="30%"></div>
+            </div>
+            <div class="progress-label">Рост конверсии: 30%</div>
           </div>
-          <div class="progress-label">Увеличение продаж: 28%</div>
-        </div>
-      </article>
+        </article>
+      </section>
+    </main>
+  </div>
 
-      <!-- Опыт Фриланс -->
-      <article class="timeline-item" role="listitem" aria-expanded="false" aria-controls="freelance-desc" hidden>
-        <h3>Таргетолог / Директолог / Контекстолог — Фриланс</h3>
-        <time datetime="2022-02 to 2022-08">Февраль 2022 — Август 2022 (7 месяцев)</time>
-        <button class="btn-experience" aria-expanded="false" aria-controls="freelance-desc" aria-label="Подробнее про опыт работы на фрилансе" onclick="toggleDesc('freelance-desc', this)">Подробнее</button>
-        <div id="freelance-desc" class="experience-desc">
-          <ul>
-            <li>Настройка таргетированной рекламы ВК, Яндекс директ, РСЯ</li>
-            <li>Контекстная реклама и анализ</li>
-            <li>Оптимизация бюджета и повышение ROI</li>
-            <li>Работа с CPA-сетями</li>
-            <li>Создание коммерческих предложений</li>
-            <li>Аналитика, A/B тесты</li>
-            <li>Настройка и ведение рекламных кампаний</li>
-          </ul>
-          <div class="progress-bar">
-            <div class="progress" data-progress="35%"></div>
-          </div>
-          <div class="progress-label">Увеличение трафика: 35%</div>
-          <div class="progress-bar">
-            <div class="progress" data-progress="30%"></div>
-          </div>
-          <div class="progress-label">Рост конверсии: 30%</div>
-        </div>
-      </article>
-    </section>
+  <script>
+    // Логика переключения опыта работы
+    const timelinePoints = document.querySelectorAll('.timeline-point');
+    const timelineItems = document.querySelectorAll('.timeline-item');
 
-    <section id="skills" tabindex="0" aria-label="Навыки и курсы">
-      <h2>Навыки</h2>
-      <ul>
-        <li>Таргетированная реклама (VK, Яндекс, Telegram)</li>
-        <li>Яндекс.Метрика, GA4</li>
-        <li>Работа с CPA-сетями (Admitad, Cityads)</li>
-        <li>Контент-маркетинг, VC.ru, Дзен</li>
-        <li>CRM: Bitrix24, AmoCRM, HubSpot</li>
-        <li>Figma, создание макетов</li>
-        <li>Коммерческие предложения</li>
-        <li>Программы лояльности</li>
-      </ul>
+    timelinePoints.forEach(point => {
+      point.addEventListener('click', () => {
+        const targetId = point.dataset.target;
 
-      <h2>Курсы</h2>
-      <ul>
-        <li>Интернет-маркетинг — Intelsib</li>
-        <li>Маркетинговые исследования — MAED</li>
-        <li>Таргетированная реклама — Эдуард Мухин</li>
-        <li>Медиапланирование — Филипп Царевский</li>
-        <li>Agile / Scrum — Coursera (лучший курс)</li>
-      </ul>
-    </section>
+        timelinePoints.forEach(p => {
+          p.classList.remove('active');
+          p.setAttribute('aria-selected', 'false');
+        });
+        point.classList.add('active');
+        point.setAttribute('aria-selected', 'true');
 
-    <section id="contact" tabindex="0" aria-label="Контакты">
-      <h2>Контакты</h2>
-      <ul>
-        <li>📞 8-(985)-422-97-39</li>
-        <li>📧 Vasilevnik05@mail.ru</li>
-        <li>💬 <a href="https://t.me/vnezap11" target="_blank" rel="noopener noreferrer" style="color:#82cfff; text-decoration:none;">Мой Telegram</a></li>
-        <li>📍 Москва</li>
-      </ul>
-    </section>
-  </main>
+        timelineItems.forEach(item => {
+          const descId = item.querySelector('button').getAttribute('aria-controls');
+          if (descId === targetId) {
+            item.removeAttribute('hidden');
+            item.setAttribute('aria-expanded', 'true');
+            item.querySelector('.experience-desc').classList.add('active');
+            item.querySelector('button').setAttribute('aria-expanded', 'true');
+          } else {
+            item.setAttribute('hidden', '');
+            item.setAttribute('aria-expanded', 'false');
+            item.querySelector('.experience-desc').classList.remove('active');
+            item.querySelector('button').setAttribute('aria-expanded', 'false');
+          }
+        });
+      });
 
-</div>
-
-<script>
-  // Переключение описания опыта по кнопке
-  function toggleDesc(id, btn) {
-    const desc = document.getElementById(id);
-    if (!desc) return;
-
-    const isActive = desc.classList.contains('active');
-
-    // Закрыть все описания и сбросить aria-expanded и aria-selected у точек
-    document.querySelectorAll('.experience-desc').forEach(el => el.classList.remove('active'));
-    document.querySelectorAll('.btn-experience').forEach(button => button.setAttribute('aria-expanded', 'false'));
-    document.querySelectorAll('.timeline-point').forEach(point => {
-      point.classList.remove('active');
-      point.setAttribute('aria-selected', 'false');
+      point.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          point.click();
+        }
+      });
     });
 
-    if (!isActive) {
-      desc.classList.add('active');
-      btn.setAttribute('aria-expanded', 'true');
-
-      // Сделать активной соответствующую точку на линии
-      const targetPoint = document.querySelector(`.timeline-point[data-target="${id}"]`);
-      if (targetPoint) {
-        targetPoint.classList.add('active');
-        targetPoint.setAttribute('aria-selected', 'true');
-        targetPoint.focus();
+    // Функция для кнопок "Подробнее"
+    function toggleDesc(descId, button) {
+      const desc = document.getElementById(descId);
+      const expanded = button.getAttribute('aria-expanded') === 'true';
+      if (expanded) {
+        desc.classList.remove('active');
+        button.setAttribute('aria-expanded', 'false');
+        desc.parentElement.setAttribute('aria-expanded', 'false');
+      } else {
+        desc.classList.add('active');
+        button.setAttribute('aria-expanded', 'true');
+        desc.parentElement.setAttribute('aria-expanded', 'true');
       }
-      // Прокрутка к секции опыта
-      desc.scrollIntoView({behavior: 'smooth', block: 'start'});
     }
-  }
 
-  // Клик на точки временной линии
-  document.querySelectorAll('.timeline-point').forEach(point => {
-    point.addEventListener('click', () => {
-      const targetId = point.getAttribute('data-target');
-      const btn = document.querySelector(`button[aria-controls="${targetId}"]`);
-      if (btn) {
-        btn.click();
-      }
-    });
-    point.addEventListener('keydown', e => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        point.click();
-      }
-    });
-  });
-
-  // Анимация прогресс-баров при прокрутке
-  function animateProgress() {
-    const bars = document.querySelectorAll('.progress');
-    const windowBottom = window.innerHeight + window.scrollY;
-
-    bars.forEach(bar => {
-      const barTop = bar.getBoundingClientRect().top + window.scrollY;
-      if (windowBottom > barTop + 20) {
+    // Анимация прогресс-баров
+    window.addEventListener('load', () => {
+      document.querySelectorAll('.progress').forEach(bar => {
         const width = bar.getAttribute('data-progress');
         bar.style.width = width;
-      }
+      });
     });
-  }
-  window.addEventListener('scroll', animateProgress);
-  window.addEventListener('load', animateProgress);
-
-  // Навигация по меню с плавным скроллом
-  document.querySelectorAll('nav a').forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault();
-      document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
-      link.classList.add('active');
-      const targetId = link.getAttribute('href').substring(1);
-      const target = document.getElementById(targetId);
-      if (target) {
-        target.scrollIntoView({behavior: 'smooth'});
-      }
-    });
-  });
-</script>
+  </script>
 
 </body>
 </html>
