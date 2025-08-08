@@ -14,15 +14,16 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0; padding: 0;
       background: #f9f9f9;
-      color: #333;
-      line-height: 1.6;
+      color: #2c3e50;
+      line-height: 1.8;
+      font-size: 17px;
     }
 
     .resume-container {
       max-width: 960px;
-      margin: 40px auto;
+      margin: 40px auto 60px;
       background: #fff;
-      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      box-shadow: 0 0 20px rgba(0,0,0,0.12);
       display: flex;
       border-radius: 8px;
       overflow: hidden;
@@ -34,40 +35,44 @@
       flex: 1 1 280px;
       background: #2c3e50;
       color: #ecf0f1;
-      padding: 30px 20px;
+      padding: 30px 25px;
       min-width: 280px;
+      box-sizing: border-box;
     }
 
     aside.sidebar .avatar {
       width: 140px;
       border-radius: 50%;
       display: block;
-      margin: 0 auto 20px auto;
+      margin: 0 auto 25px auto;
       border: 3px solid #ecf0f1;
     }
 
     aside.sidebar .name {
       text-align: center;
-      margin-bottom: 5px;
-      font-size: 1.8em;
+      margin-bottom: 8px;
+      font-size: 2em;
       font-weight: 700;
+      letter-spacing: 0.02em;
     }
 
     aside.sidebar .title {
       text-align: center;
       font-style: italic;
-      margin-bottom: 25px;
-      font-size: 1.1em;
+      margin-bottom: 30px;
+      font-size: 1.15em;
       color: #bdc3c7;
+      letter-spacing: 0.01em;
     }
 
     aside.sidebar h2 {
       border-bottom: 1px solid #34495e;
-      padding-bottom: 6px;
-      margin-top: 30px;
-      margin-bottom: 12px;
+      padding-bottom: 8px;
+      margin-top: 35px;
+      margin-bottom: 15px;
       font-weight: 600;
-      font-size: 1.1em;
+      font-size: 1.2em;
+      letter-spacing: 0.02em;
     }
 
     aside.sidebar ul {
@@ -77,8 +82,8 @@
     }
 
     aside.sidebar ul li, aside.sidebar p {
-      margin-bottom: 10px;
-      font-size: 0.95em;
+      margin-bottom: 14px;
+      font-size: 1.05em;
     }
 
     aside.sidebar .contact-list li {
@@ -86,42 +91,60 @@
       align-items: center;
     }
 
+    aside.sidebar .contact-list li a {
+      color: #ecf0f1;
+      text-decoration: none;
+      word-break: break-word;
+    }
+
+    aside.sidebar .contact-list li a:hover {
+      text-decoration: underline;
+    }
+
     /* Content area */
     main.content {
       flex: 2 1 600px;
-      padding: 30px 40px;
+      padding: 35px 50px 50px 50px;
       background: #fff;
       min-width: 300px;
+      box-sizing: border-box;
+      color: #34495e;
+      font-size: 1.1em;
+      letter-spacing: 0.015em;
     }
 
     main.content section {
-      margin-bottom: 30px;
+      margin-bottom: 38px;
     }
 
     main.content h2 {
-      font-size: 1.5em;
-      margin-bottom: 15px;
-      color: #2c3e50;
-      border-bottom: 2px solid #2980b9;
-      padding-bottom: 6px;
+      font-size: 1.7em;
+      margin-bottom: 18px;
+      color: #2980b9;
+      border-bottom: 2.5px solid #2980b9;
+      padding-bottom: 8px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
     }
 
     main.content h3 {
-      margin-bottom: 8px;
-      color: #34495e;
-      font-weight: 600;
+      margin-bottom: 12px;
+      color: #2c3e50;
+      font-weight: 700;
+      letter-spacing: 0.01em;
     }
 
     main.content ul {
       list-style: none;
-      padding-left: 25px; /* Отступ для текста, чтобы не накладывались стрелки */
+      padding-left: 28px; /* Отступ для стрелочек */
       margin-top: 0;
     }
 
     main.content ul li {
       position: relative;
-      padding-left: 20px; /* Отступ текста справа от стрелки */
-      margin-bottom: 8px;
+      padding-left: 22px;
+      margin-bottom: 12px;
+      line-height: 1.5;
     }
     main.content ul li::before {
       content: "»";
@@ -129,21 +152,25 @@
       position: absolute;
       left: 0;
       top: 0;
-      font-weight: bold;
+      font-weight: 700;
+      font-size: 1.2em;
+      line-height: 1;
+      user-select: none;
     }
 
     /* Typewriter effect */
     .typewriter {
       overflow: hidden;
-      border-right: .15em solid #2980b9;
+      border-right: .18em solid #2980b9;
       white-space: nowrap;
       animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
       font-family: monospace;
-      font-size: 2em;
+      font-size: 2.2em;
       font-weight: 700;
       color: #2980b9;
-      margin-bottom: 30px;
+      margin-bottom: 45px;
       text-align: center;
+      letter-spacing: 0.03em;
     }
 
     @keyframes typing {
@@ -160,20 +187,23 @@
     .tabs {
       display: flex;
       flex-wrap: wrap;
-      margin-bottom: 20px;
-      border-bottom: 2px solid #2980b9;
+      margin-bottom: 30px;
+      border-bottom: 3px solid #2980b9;
+      gap: 8px;
     }
 
     .tab-button {
       background: none;
       border: none;
-      padding: 10px 20px;
+      padding: 14px 26px;
       cursor: pointer;
       font-weight: 600;
       color: #555;
-      border-bottom: 3px solid transparent;
+      border-bottom: 4px solid transparent;
       transition: all 0.3s ease;
-      font-size: 1em;
+      font-size: 1.1em;
+      border-radius: 6px 6px 0 0;
+      user-select: none;
     }
 
     .tab-button:hover {
@@ -184,13 +214,15 @@
       border-bottom-color: #2980b9;
       color: #2980b9;
       font-weight: 700;
+      background: #ecf6fd;
     }
 
     .tab-content {
       display: none;
       animation: fadeIn 0.5s ease forwards;
       color: #444;
-      font-size: 1em;
+      font-size: 1.1em;
+      line-height: 1.6;
     }
 
     .tab-content.active {
@@ -207,19 +239,21 @@
       text-align: center;
       margin-bottom: 40px;
       background: #2980b9;
-      padding: 12px 0;
+      padding: 15px 0;
       position: sticky;
       top: 0;
-      z-index: 10;
+      z-index: 1000;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
     }
 
     nav a {
       color: #fff;
       text-decoration: none;
-      margin: 0 18px;
+      margin: 0 22px;
       font-weight: 600;
-      font-size: 1.05em;
+      font-size: 1.15em;
       transition: color 0.3s ease;
+      user-select: none;
     }
 
     nav a:hover {
@@ -235,13 +269,14 @@
       background: #2980b9;
       color: #fff;
       border: none;
-      padding: 12px 15px;
+      padding: 14px 18px;
       border-radius: 50%;
-      font-size: 22px;
+      font-size: 24px;
       cursor: pointer;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      box-shadow: 0 3px 12px rgba(0,0,0,0.3);
       transition: background 0.3s ease;
-      z-index: 100;
+      z-index: 9999;
+      user-select: none;
     }
 
     #backToTop:hover {
@@ -251,7 +286,7 @@
     /* Social icons */
     .social-icons {
       text-align: center;
-      margin-top: 15px;
+      margin-top: 20px;
     }
 
     .icon-link {
@@ -261,13 +296,71 @@
     }
 
     .icon-link img {
-      width: 32px;
+      width: 36px;
       vertical-align: middle;
+      filter: brightness(0) invert(1);
+      transition: filter 0.3s ease;
     }
 
-    .icon-link:hover {
-      transform: scale(1.2);
-      filter: drop-shadow(0 0 8px #2980b9);
+    .icon-link:hover img {
+      filter: brightness(1) invert(0);
+      transform: scale(1.25);
+    }
+
+    /* Адаптивность */
+    @media (max-width: 920px) {
+      .resume-container {
+        flex-direction: column;
+        margin: 20px auto 40px;
+        max-width: 90%;
+      }
+      aside.sidebar {
+        width: 100%;
+        min-width: auto;
+        padding: 25px 20px 30px;
+      }
+      main.content {
+        width: 100%;
+        padding: 25px 20px 40px;
+      }
+      nav a {
+        margin: 0 14px;
+        font-size: 1em;
+      }
+      .tabs {
+        justify-content: center;
+      }
+      .tab-button {
+        padding: 10px 16px;
+        font-size: 1em;
+      }
+      .typewriter {
+        font-size: 1.6em;
+        margin-bottom: 30px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .tab-button {
+        padding: 8px 12px;
+        font-size: 0.9em;
+      }
+      nav a {
+        margin: 0 10px;
+        font-size: 0.9em;
+      }
+      aside.sidebar .name {
+        font-size: 1.5em;
+      }
+      aside.sidebar .title {
+        font-size: 1em;
+      }
+      main.content h2 {
+        font-size: 1.4em;
+      }
+      main.content h3 {
+        font-size: 1.1em;
+      }
     }
   </style>
 </head>
@@ -293,8 +386,8 @@
         <h2>Контакты</h2>
         <ul class="contact-list">
           <li>📞 8-(985)-422-97-39</li>
-          <li>📧 Vasilevnik05@mail.ru</li>
-          <li>💬 <a href="https://t.me/vnezap11" target="_blank" style="color:#ecf0f1; text-decoration:none;">@vnezap11</a></li>
+          <li>📧 <a href="mailto:Vasilevnik05@mail.ru">Vasilevnik05@mail.ru</a></li>
+          <li>💬 <a href="https://t.me/vnezap11" target="_blank" rel="noopener noreferrer">@vnezap11</a></li>
           <li>📍 Москва</li>
         </ul>
         <p>💰 От 80 000 руб</p>
@@ -334,10 +427,10 @@
         <h2>Хобби</h2>
         <p>Спортзал, чтение книг</p>
       </section>
-      
+
       <div class="social-icons" data-aos="fade-up" data-aos-delay="500">
-        <a href="https://t.me/vnezap11" target="_blank" class="icon-link" title="Telegram">
-          <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram" />
+        <a href="https://t.me/vnezap11" target="_blank" rel="noopener noreferrer" class="icon-link" title="Telegram">
+          <img src="telegram.png" alt="Telegram" />
         </a>
       </div>
     </aside>
@@ -355,14 +448,14 @@
       <section id="experience" data-aos="fade-up" data-aos-delay="100">
         <h2>Опыт работы</h2>
 
-        <div class="tabs">
-          <button class="tab-button active" data-tab="yamdiet">Трафик-менеджер Yamdiet</button>
-          <button class="tab-button" data-tab="jobforarabists">Digital-маркетолог Job for Arabists</button>
-          <button class="tab-button" data-tab="producer">Продюсер онлайн-школы</button>
-          <button class="tab-button" data-tab="freelance">Таргетолог / Контекстолог (Фриланс)</button>
+        <div class="tabs" role="tablist">
+          <button class="tab-button active" data-tab="yamdiet" role="tab" aria-selected="true" aria-controls="yamdiet">Трафик-менеджер Yamdiet</button>
+          <button class="tab-button" data-tab="jobforarabists" role="tab" aria-selected="false" aria-controls="jobforarabists">Digital-маркетолог Job for Arabists</button>
+          <button class="tab-button" data-tab="producer" role="tab" aria-selected="false" aria-controls="producer">Продюсер онлайн-школы</button>
+          <button class="tab-button" data-tab="freelance" role="tab" aria-selected="false" aria-controls="freelance">Таргетолог / Контекстолог (Фриланс)</button>
         </div>
 
-        <div class="tab-content active" id="yamdiet">
+        <div class="tab-content active" id="yamdiet" role="tabpanel" tabindex="0">
           <h3>Трафик-менеджер, Компания Yamdiet (Москва и Московская область)</h3>
           <p><em>Апрель 2024 — Июнь 2025 (1 год 3 месяца)</em></p>
           <ul>
@@ -376,7 +469,7 @@
           </ul>
         </div>
 
-        <div class="tab-content" id="jobforarabists">
+        <div class="tab-content" id="jobforarabists" role="tabpanel" tabindex="0" aria-hidden="true">
           <h3>Digital-маркетолог, Job for Arabists (Бюро переводов)</h3>
           <p><em>Май 2023 — Март 2024 (11 месяцев)</em></p>
           <ul>
@@ -387,76 +480,68 @@
           </ul>
         </div>
 
-        <div class="tab-content" id="producer">
-          <h3>Продюсер онлайн-школы (психология, инфопродукт)</h3>
+        <div class="tab-content" id="producer" role="tabpanel" tabindex="0" aria-hidden="true">
+          <h3>Продюсер онлайн-школы (Инфопродукт, психология)</h3>
           <p><em>Август 2022 — Май 2023 (10 месяцев)</em></p>
           <ul>
-            <li>Управление полным циклом запуска инфопродуктов: концепция, стратегия, запуск, анализ.</li>
-            <li>Определение и контроль KPI: регистрации, конверсии в оплату, средний чек, ROI рекламных кампаний.</li>
-            <li>Рост выручки на 45% за счёт оптимизации маркетинга и новых каналов продвижения.</li>
-            <li>Настройка вебинаров и автоматизация продаж через CRM и платёжные системы.</li>
+            <li>Полный запуск инфопродуктов: стратегия, контент, маркетинг и техподдержка.</li>
+            <li>Настройка таргетированной рекламы с ROI до 140%.</li>
+            <li>Разработка воронок продаж и сценариев вебинаров для удержания клиентов.</li>
+            <li>Ведение KPI по количеству лидов, стоимостью привлечения и конверсии в покупку.</li>
           </ul>
         </div>
 
-        <div class="tab-content" id="freelance">
+        <div class="tab-content" id="freelance" role="tabpanel" tabindex="0" aria-hidden="true">
           <h3>Таргетолог / Контекстолог / Директолог (Фриланс)</h3>
           <p><em>Февраль 2022 — Август 2022 (7 месяцев)</em></p>
           <ul>
-            <li>Настройка и ведение таргетированной и контекстной рекламы для малого и среднего бизнеса.</li>
-            <li>Оптимизация KPI: CTR, CPC, CPA, ROI.</li>
-            <li>A/B тестирование креативов и посадочных страниц для повышения эффективности.</li>
-            <li>Разработка стратегий рекламных кампаний под разные бизнес-цели.</li>
+            <li>Настройка рекламных кампаний в Яндекс.Директ, Google Ads, VK, Telegram.</li>
+            <li>Оптимизация бюджета и повышение ROI на 20%+ по разным нишам.</li>
+            <li>Создание и тестирование рекламных креативов, написание продающих текстов.</li>
+            <li>Работа с аналитикой и сквозной отчётностью для клиентов.</li>
           </ul>
         </div>
       </section>
 
-      <section id="skills" data-aos="fade-up" data-aos-delay="200">
-        <h2>Образование</h2>
-        <p><strong>РАНХиГС</strong><br />Факультет управления инновациями в технологической сфере<br />2023–2027 (в процессе)</p>
-
+      <section id="skills" data-aos="fade-up" data-aos-delay="150">
         <h2>Курсы</h2>
         <ul>
           <li>Интернет-маркетинг — Intelsib</li>
           <li>Маркетинговые исследования — MAED</li>
           <li>Таргетированная реклама — Эдуард Мухин</li>
           <li>Медиапланирование — Филипп Царевский</li>
-          <li><strong>Certified Scrum Master (CSM) — Scrum Alliance</strong></li>
+          <li>Agile Project Management — Coursera (University of Virginia)</li>
         </ul>
       </section>
 
-      <section data-aos="fade-up" data-aos-delay="300">
-        <h2>Рекомендации</h2>
-        <p>Кристина, HR в Yamdiet<br />📞 8 (952) 020-99-00</p>
-      </section>
-
     </main>
+
   </div>
 
-  <button id="backToTop" title="Наверх">↑</button>
+  <button id="backToTop" title="Наверх" aria-label="Наверх">&#8679;</button>
 
   <!-- AOS JS -->
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script>
     AOS.init({
-      duration: 1000,
-      once: true
+      once: true,
+      duration: 700,
+      easing: 'ease-in-out'
     });
-  </script>
 
-  <script>
-    // Tabs переключение
-    const buttons = document.querySelectorAll('.tab-button');
-    const contents = document.querySelectorAll('.tab-content');
+    // Табы
+    document.querySelectorAll('.tab-button').forEach(button => {
+      button.addEventListener('click', () => {
+        const tab = button.getAttribute('data-tab');
 
-    buttons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        buttons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
+        document.querySelectorAll('.tab-button').forEach(btn => {
+          btn.classList.toggle('active', btn === button);
+          btn.setAttribute('aria-selected', btn === button ? 'true' : 'false');
+        });
 
-        const tab = btn.getAttribute('data-tab');
-
-        contents.forEach(c => {
-          c.id === tab ? c.classList.add('active') : c.classList.remove('active');
+        document.querySelectorAll('.tab-content').forEach(content => {
+          content.classList.toggle('active', content.id === tab);
+          content.setAttribute('aria-hidden', content.id !== tab);
         });
       });
     });
@@ -486,5 +571,4 @@
   </script>
 </body>
 </html>
-
 
