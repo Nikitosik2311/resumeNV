@@ -243,47 +243,44 @@
     /* Progress bars */
     .progress-container {
       margin-top: 15px;
-    }
-    .progress-container > div {
-      margin-bottom: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
     }
     .progress-label {
+      font-weight: 600;
       font-size: 14px;
+      color: #a0c4ff;
       margin-bottom: 4px;
-      color: #90caf9;
-      user-select: text;
     }
     .progress-bar-wrapper {
-      background: #333;
-      border-radius: 10px;
+      background-color: #2a2a2a;
+      border-radius: 8px;
       overflow: hidden;
-      height: 20px;
-      box-shadow: inset 0 1px 3px rgba(0,0,0,0.5);
-      transition: transform 0.3s ease;
+      height: 18px;
+      width: 100%;
+      box-shadow: inset 0 0 5px #000000aa;
       cursor: pointer;
-      outline-offset: 2px;
+      transition: box-shadow 0.3s ease;
     }
-    .progress-bar-wrapper:hover,
-    .progress-bar-wrapper:focus {
-      animation: pulse 1.5s infinite;
-      transform-origin: center;
-      outline: 2px solid #4aa8ff;
+    .progress-bar-wrapper:focus,
+    .progress-bar-wrapper:hover {
+      box-shadow: 0 0 10px #82b1ff, inset 0 0 8px #004bb5cc;
+      animation: pulse 2s infinite;
+      outline: none;
     }
     .progress-bar {
       height: 100%;
       background-color: #4aa8ff;
-      width: 0%;
       transition: width 0.6s ease;
-      border-radius: 10px 0 0 10px;
+      border-radius: 8px 0 0 8px;
     }
     @keyframes pulse {
       0%, 100% {
-        filter: brightness(1);
-        transform: scale(1);
+        box-shadow: 0 0 6px #82b1ff, inset 0 0 8px #004bb5cc;
       }
       50% {
-        filter: brightness(1.25);
-        transform: scale(1.05);
+        box-shadow: 0 0 14px #b0d7ff, inset 0 0 12px #3399ffdd;
       }
     }
     /* Responsive */
@@ -416,44 +413,38 @@
           <button class="btn-experience" aria-expanded="false" aria-controls="desc-yamdiet" aria-label="Подробнее о Трафик-менеджер, Компания Yamdiet">Подробнее</button>
           <div id="desc-yamdiet" class="experience-desc" hidden>
             <ul>
-              <li>Настройка таргетированной рекламы (ВК, Яндекс директ, РСЯ) с бюджетом до 600 000₽ в месяц</li>
-              <li>Управление командой из 8 человек: SEO-отдел, дизайнер, IT-отдел, взаимодействие с отделом продаж</li>
-              <li>Работа с Яндекс.Метрикой и GA4 для точного анализа и оптимизации рекламных кампаний</li>
-              <li>Работа с CPA-сетями (Admitad, Cityads, Bestbenefits), рост количества конверсий на 12%</li>
-              <li>Продвижение продуктов Т-банк бизнес и Альфа Таргет с увеличением ROI на 15%</li>
-              <li>Подготовка коммерческих предложений и проведение переговоров с партнёрами, что привело к увеличению долгосрочных контрактов на 50%</li>
-              <li>Разработка и внедрение SEO-стратегии, результатом стал рост органического трафика на 5%</li>
-              <li>Автоматизация маркетинговых процессов и интеграция с CRM, сокращение времени обработки заявок на 30%</li>
+              <li>Ведение рекламных кампаний с ежемесячным бюджетом до 400 000₽</li>
+              <li>Увеличение ROI на рекламные кампании на 20%</li>
+              <li>Управление командой из 8 человек: SEO-отдел, дизайнер, IT отдел, взаимодействие с отделом продаж</li>
+              <li>Рост трафика на сайт на 25%</li>
+              <li>Повышение конверсии лидов на 15%</li>
+              <li>Оптимизация рекламных каналов, снижение стоимости лида на 18%</li>
+              <li>Внедрение систем аналитики Яндекс.Метрика и GA4</li>
+              <li>Разработка и внедрение KPI для маркетинговой команды</li>
             </ul>
             <div class="progress-container">
               <div>
-                <div class="progress-label">Увеличение ROI — 15%</div>
+                <div class="progress-label">Рост ROI — 20%</div>
+                <div class="progress-bar-wrapper" tabindex="0" aria-label="Прогресс: 20 процентов">
+                  <div class="progress-bar" style="width: 20%;"></div>
+                </div>
+              </div>
+              <div>
+                <div class="progress-label">Рост трафика — 25%</div>
+                <div class="progress-bar-wrapper" tabindex="0" aria-label="Прогресс: 25 процентов">
+                  <div class="progress-bar" style="width: 25%;"></div>
+                </div>
+              </div>
+              <div>
+                <div class="progress-label">Повышение конверсии — 15%</div>
                 <div class="progress-bar-wrapper" tabindex="0" aria-label="Прогресс: 15 процентов">
                   <div class="progress-bar" style="width: 15%;"></div>
                 </div>
               </div>
               <div>
-                <div class="progress-label">Рост конверсий — 12%</div>
-                <div class="progress-bar-wrapper" tabindex="0" aria-label="Прогресс: 12 процентов">
-                  <div class="progress-bar" style="width: 12%;"></div>
-                </div>
-              </div>
-              <div>
-                <div class="progress-label">Долгосрочные контракты — 50%</div>
-                <div class="progress-bar-wrapper" tabindex="0" aria-label="Прогресс: 50 процентов">
-                  <div class="progress-bar" style="width: 50%;"></div>
-                </div>
-              </div>
-              <div>
-                <div class="progress-label">Рост органического трафика — 5%</div>
-                <div class="progress-bar-wrapper" tabindex="0" aria-label="Прогресс: 5 процентов">
-                  <div class="progress-bar" style="width: 5%;"></div>
-                </div>
-              </div>
-              <div>
-                <div class="progress-label">Сокращение времени обработки заявок — 30%</div>
-                <div class="progress-bar-wrapper" tabindex="0" aria-label="Прогресс: 30 процентов">
-                  <div class="progress-bar" style="width: 30%;"></div>
+                <div class="progress-label">Снижение стоимости лида — 18%</div>
+                <div class="progress-bar-wrapper" tabindex="0" aria-label="Прогресс: 18 процентов">
+                  <div class="progress-bar" style="width: 18%;"></div>
                 </div>
               </div>
             </div>
@@ -466,36 +457,23 @@
           <button class="btn-experience" aria-expanded="false" aria-controls="desc-jobarabists" aria-label="Подробнее о Digital-маркетолог, Job for Arabists">Подробнее</button>
           <div id="desc-jobarabists" class="experience-desc" hidden>
             <ul>
-              <li>Ведение рекламных кампаний с ежемесячным бюджетом до 250 000₽</li>
-              <li>Оптимизация рекламных воронок, улучшение CTR на 10%</li>
-              <li>Анализ поведения пользователей с помощью Яндекс.Метрики и GA4, повышение удержания клиентов на 7%</li>
-              <li>Разработка контент-стратегии для социальных сетей, увеличение подписчиков на 18%</li>
-              <li>Настройка и сопровождение CRM-системы, улучшение скорости обработки заявок на 20%</li>
-              <li>Подготовка коммерческих предложений и ведение переговоров с крупными партнёрами</li>
+              <li>Ведение рекламных кампаний с бюджетом до 150 000₽ в месяц</li>
+              <li>Рост продаж на 15%</li>
+              <li>Оптимизация каналов трафика, снижение CPA на 12%</li>
+              <li>Создание отчетности и аналитика эффективности маркетинга</li>
+              <li>Координация работы с подрядчиками и рекламными платформами</li>
             </ul>
             <div class="progress-container">
               <div>
-                <div class="progress-label">Увеличение CTR — 10%</div>
-                <div class="progress-bar-wrapper" tabindex="0" aria-label="Прогресс: 10 процентов">
-                  <div class="progress-bar" style="width: 10%;"></div>
+                <div class="progress-label">Рост продаж — 15%</div>
+                <div class="progress-bar-wrapper" tabindex="0" aria-label="Прогресс: 15 процентов">
+                  <div class="progress-bar" style="width: 15%;"></div>
                 </div>
               </div>
               <div>
-                <div class="progress-label">Удержание клиентов — 7%</div>
-                <div class="progress-bar-wrapper" tabindex="0" aria-label="Прогресс: 7 процентов">
-                  <div class="progress-bar" style="width: 7%;"></div>
-                </div>
-              </div>
-              <div>
-                <div class="progress-label">Рост подписчиков — 18%</div>
-                <div class="progress-bar-wrapper" tabindex="0" aria-label="Прогресс: 18 процентов">
-                  <div class="progress-bar" style="width: 18%;"></div>
-                </div>
-              </div>
-              <div>
-                <div class="progress-label">Ускорение обработки заявок — 20%</div>
-                <div class="progress-bar-wrapper" tabindex="0" aria-label="Прогресс: 20 процентов">
-                  <div class="progress-bar" style="width: 20%;"></div>
+                <div class="progress-label">Снижение CPA — 12%</div>
+                <div class="progress-bar-wrapper" tabindex="0" aria-label="Прогресс: 12 процентов">
+                  <div class="progress-bar" style="width: 12%;"></div>
                 </div>
               </div>
             </div>
@@ -503,34 +481,21 @@
         </article>
 
         <article id="exp-producer" class="timeline-item" role="tabpanel" aria-labelledby="tab-producer" aria-expanded="false" hidden>
-          <h3>Продюсер онлайн-школы (Фриланс)</h3>
+          <h3>Продюсер онлайн-школы (фриланс)</h3>
           <time>Август 2022 - Май 2023 (10 месяцев)</time>
-          <button class="btn-experience" aria-expanded="false" aria-controls="desc-producer" aria-label="Подробнее о Продюсер онлайн-школы (Фриланс)">Подробнее</button>
+          <button class="btn-experience" aria-expanded="false" aria-controls="desc-producer" aria-label="Подробнее о Продюсер онлайн-школы">Подробнее</button>
           <div id="desc-producer" class="experience-desc" hidden>
             <ul>
-              <li>Координация работы команды из 6 человек (маркетологи, дизайнеры, копирайтеры)</li>
-              <li>Оптимизация рекламного бюджета до 150 000₽ в месяц</li>
-              <li>Запуск рекламных кампаний в социальных сетях с ROI до 8%</li>
-              <li>Создание и внедрение стратегий роста аудитории, увеличение базы учеников на 25%</li>
-              <li>Аналитика и улучшение конверсий на сайте, рост конверсий на 15%</li>
+              <li>Организация рекламных кампаний с бюджетом до 100 000₽</li>
+              <li>Увеличение базы учеников на 30%</li>
+              <li>Работа с подрядчиками и настройка воронок продаж</li>
+              <li>Контроль качества контента и коммуникация с преподавателями</li>
             </ul>
             <div class="progress-container">
               <div>
-                <div class="progress-label">ROI — 8%</div>
-                <div class="progress-bar-wrapper" tabindex="0" aria-label="Прогресс: 8 процентов">
-                  <div class="progress-bar" style="width: 8%;"></div>
-                </div>
-              </div>
-              <div>
-                <div class="progress-label">Рост базы учеников — 25%</div>
-                <div class="progress-bar-wrapper" tabindex="0" aria-label="Прогресс: 25 процентов">
-                  <div class="progress-bar" style="width: 25%;"></div>
-                </div>
-              </div>
-              <div>
-                <div class="progress-label">Рост конверсий — 15%</div>
-                <div class="progress-bar-wrapper" tabindex="0" aria-label="Прогресс: 15 процентов">
-                  <div class="progress-bar" style="width: 15%;"></div>
+                <div class="progress-label">Рост базы учеников — 30%</div>
+                <div class="progress-bar-wrapper" tabindex="0" aria-label="Прогресс: 30 процентов">
+                  <div class="progress-bar" style="width: 30%;"></div>
                 </div>
               </div>
             </div>
@@ -538,109 +503,104 @@
         </article>
 
         <article id="exp-freelance" class="timeline-item" role="tabpanel" aria-labelledby="tab-freelance" aria-expanded="false" hidden>
-          <h3>Таргетолог / Контекстолог / Директолог (Фриланс)</h3>
+          <h3>Таргетолог / Контекстолог / Директолог (фриланс)</h3>
           <time>Февраль 2022 - Август 2022 (7 месяцев)</time>
-          <button class="btn-experience" aria-expanded="false" aria-controls="desc-freelance" aria-label="Подробнее о Таргетолог / Контекстолог / Директолог (Фриланс)">Подробнее</button>
+          <button class="btn-experience" aria-expanded="false" aria-controls="desc-freelance" aria-label="Подробнее о Таргетолог / Контекстолог / Директолог">Подробнее</button>
           <div id="desc-freelance" class="experience-desc" hidden>
             <ul>
-              <li>Настройка и оптимизация рекламных кампаний в ВК и Яндекс.Директ</li>
-              <li>Оптимизация бюджета до 80 000₽ в месяц</li>
-              <li>Повышение CTR рекламных объявлений на 7%</li>
-              <li>Использование инструментов аналитики (Яндекс.Метрика, Google Analytics)</li>
-              <li>Консультирование клиентов по вопросам digital-маркетинга</li>
+              <li>Настройка таргетированной рекламы и контекстных кампаний</li>
+              <li>Анализ и оптимизация рекламных бюджетов до 80 000₽</li>
+              <li>Повышение CTR на 25%</li>
+              <li>Составление отчетов и рекомендации по улучшению</li>
             </ul>
             <div class="progress-container">
               <div>
-                <div class="progress-label">Рост CTR — 7%</div>
-                <div class="progress-bar-wrapper" tabindex="0" aria-label="Прогресс: 7 процентов">
-                  <div class="progress-bar" style="width: 7%;"></div>
-                </div>
-              </div>
-              <div>
-                <div class="progress-label">Оптимизация бюджета — 100%</div>
-                <div class="progress-bar-wrapper" tabindex="0" aria-label="Прогресс: 100 процентов">
-                  <div class="progress-bar" style="width: 100%;"></div>
+                <div class="progress-label">Рост CTR — 25%</div>
+                <div class="progress-bar-wrapper" tabindex="0" aria-label="Прогресс: 25 процентов">
+                  <div class="progress-bar" style="width: 25%;"></div>
                 </div>
               </div>
             </div>
           </div>
         </article>
-
       </section>
 
       <section id="education" tabindex="-1" aria-labelledby="education-heading">
         <h2 id="education-heading">Образование</h2>
         <p><strong>РАНХиГС</strong></p>
         <p>Факультет — Управление инновациями в технологической сфере</p>
-        <p>Начало обучения — 2023, Окончание — 2027</p>
+        <p>2023 — 2027</p>
       </section>
 
       <section id="courses" tabindex="-1" aria-labelledby="courses-heading">
         <h2 id="courses-heading">Курсы и сертификаты</h2>
         <ul>
-          <li>Таргетированная реклама VK и Яндекс (2023)</li>
-          <li>Google Analytics для маркетологов (2022)</li>
-          <li>SEO-оптимизация и контент-маркетинг (2023)</li>
-          <li>Курс по управлению проектами (2023)</li>
+          <li>Интернет маркетинг — Intelsib</li>
+          <li>Маркетинговые исследования — MAED</li>
+          <li>Масштаб 5.0 — Мари Галантер</li>
+          <li>Дисциплина таргетированной рекламы Вконтакте — Эдуард Мухин</li>
+          <li>Адекватный директ — Никита Строков</li>
+          <li>Agile и Scrum — ScrumStudy</li>
         </ul>
       </section>
 
     </main>
-
   </div>
 
-<script>
-  // Переключение табов опыта работы
-  const tabs = document.querySelectorAll('.timeline-point');
-  const items = document.querySelectorAll('.timeline-item');
+  <script>
+    const tabs = document.querySelectorAll('.timeline-point');
+    const panels = document.querySelectorAll('.timeline-item');
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => {
+          t.classList.remove('active');
+          t.setAttribute('aria-selected', 'false');
+          t.setAttribute('tabindex', '-1');
+        });
+        panels.forEach(panel => {
+          panel.setAttribute('aria-expanded', 'false');
+          panel.hidden = true;
+          const btn = panel.querySelector('.btn-experience');
+          if (btn) {
+            btn.setAttribute('aria-expanded', 'false');
+            const desc = panel.querySelector('.experience-desc');
+            if (desc) desc.hidden = true;
+          }
+        });
 
-  tabs.forEach((tab, index) => {
-    tab.addEventListener('click', () => {
-      tabs.forEach(t => {
-        t.classList.remove('active');
-        t.setAttribute('aria-selected', 'false');
-        t.tabIndex = -1;
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+        tab.removeAttribute('tabindex');
+
+        const panelId = tab.getAttribute('aria-controls');
+        const panel = document.getElementById(panelId);
+        panel.hidden = false;
+        panel.setAttribute('aria-expanded', 'true');
+        // Collapse all detail desc on tab change
+        const btn = panel.querySelector('.btn-experience');
+        const desc = panel.querySelector('.experience-desc');
+        if (btn && desc) {
+          btn.setAttribute('aria-expanded', 'false');
+          desc.hidden = true;
+        }
       });
-      tab.classList.add('active');
-      tab.setAttribute('aria-selected', 'true');
-      tab.tabIndex = 0;
+    });
 
-      items.forEach(item => {
-        item.hidden = true;
-        item.setAttribute('aria-expanded', 'false');
+    const detailButtons = document.querySelectorAll('.btn-experience');
+    detailButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+        const desc = document.getElementById(btn.getAttribute('aria-controls'));
+        // The description div is sibling div with class experience-desc
+        const parentPanel = btn.parentElement;
+        const descDiv = parentPanel.querySelector('.experience-desc');
+        if (descDiv) {
+          descDiv.hidden = !descDiv.hidden;
+        }
       });
-      items[index].hidden = false;
-      items[index].setAttribute('aria-expanded', 'true');
-
-      // Убрать и сбросить все "Подробнее"
-      const allDesc = items[index].querySelectorAll('.experience-desc');
-      allDesc.forEach(desc => desc.hidden = true);
-      const btn = items[index].querySelector('.btn-experience');
-      if (btn) {
-        btn.setAttribute('aria-expanded', 'false');
-        btn.textContent = 'Подробнее';
-      }
     });
-  });
-
-  // Кнопка "Подробнее" с прогресс-барами
-  document.querySelectorAll('.btn-experience').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const desc = btn.nextElementSibling;
-      if (!desc) return;
-      const expanded = btn.getAttribute('aria-expanded') === 'true';
-      if (expanded) {
-        desc.hidden = true;
-        btn.setAttribute('aria-expanded', 'false');
-        btn.textContent = 'Подробнее';
-      } else {
-        desc.hidden = false;
-        btn.setAttribute('aria-expanded', 'true');
-        btn.textContent = 'Свернуть';
-      }
-    });
-  });
-</script>
+  </script>
 
 </body>
 </html>
