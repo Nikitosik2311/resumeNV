@@ -114,18 +114,22 @@
 
     main.content ul {
       list-style: none;
-      padding-left: 20px;
+      padding-left: 25px; /* Отступ для текста, чтобы не накладывались стрелки */
+      margin-top: 0;
     }
 
     main.content ul li {
-      margin-bottom: 8px;
       position: relative;
+      padding-left: 20px; /* Отступ текста справа от стрелки */
+      margin-bottom: 8px;
     }
     main.content ul li::before {
       content: "»";
       color: #2980b9;
       position: absolute;
       left: 0;
+      top: 0;
+      font-weight: bold;
     }
 
     /* Typewriter effect */
@@ -335,7 +339,6 @@
         <a href="https://t.me/vnezap11" target="_blank" class="icon-link" title="Telegram">
           <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram" />
         </a>
-        <!-- Можешь добавить другие иконки здесь -->
       </div>
     </aside>
 
