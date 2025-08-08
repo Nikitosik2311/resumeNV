@@ -483,6 +483,78 @@
           <h3>Digital-маркетолог, Job for Arabists (Бюро переводов)</h3>
           <p><em>Май 2023 — Март 2024 (11 месяцев)</em></p>
           <ul>
-            <li>Разработка и реализация маркетинговой стратегии для увеличения доли рынка в B2B
+            <li>Разработка и реализация маркетинговой стратегии для увеличения доли рынка в B2B сегменте.</li>
+            <li>Оптимизация рекламных кампаний, снижение стоимости лида на 18%.</li>
+            <li>Рост органического и платного трафика на 22% за счёт комбинированных каналов.</li>
+            <li>Настройка CRM и автоматизация процессов коммуникации с клиентами.</li>
+          </ul>
+        </div>
+
+        <div class="tab-content" id="producer" role="tabpanel" tabindex="0" aria-labelledby="tab-producer" aria-hidden="true">
+          <h3>Продюсер онлайн-школы (Инфо-продукт по психологии)</h3>
+          <p><em>Август 2022 — Май 2023 (10 месяцев)</em></p>
+          <ul>
+            <li>Организация рекламных кампаний в соцсетях и Google Ads с ростом продаж на 25%.</li>
+            <li>Оптимизация посадочных страниц, улучшение показателя отказов на 14%.</li>
+            <li>Составление контент-плана и контроль качества контента для соцсетей и email-рассылок.</li>
+          </ul>
+        </div>
+
+        <div class="tab-content" id="freelance" role="tabpanel" tabindex="0" aria-labelledby="tab-freelance" aria-hidden="true">
+          <h3>Таргетолог / Контекстолог (Фриланс)</h3>
+          <p><em>Февраль 2022 — Август 2022 (7 месяцев)</em></p>
+          <ul>
+            <li>Настройка и ведение рекламных кампаний в Яндекс.Директ, VK, Telegram Ads для клиентов из разных ниш.</li>
+            <li>Повышение ROI рекламных кампаний на 20% за счёт точной сегментации и оптимизации бюджета.</li>
+            <li>Регулярный анализ и корректировка стратегий на основе данных Яндекс.Метрики и Google Analytics.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="skills" data-aos="fade-up" data-aos-delay="200">
+        <h2>Навыки и Курсы</h2>
+        <ul>
+          <li>Таргетированная и контекстная реклама, аналитика, CRM</li>
+          <li>Agile / Scrum — Курс «Professional Scrum Master» (PSM I), Scrum.org</li>
+          <li>Управление командами, стратегическое планирование</li>
+        </ul>
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- AOS JS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ once: true });
+
+    // Tabs функционал
+    const tabs = document.querySelectorAll('.tab-button');
+    const contents = document.querySelectorAll('.tab-content');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        // Убираем активность у всех кнопок
+        tabs.forEach(t => {
+          t.classList.remove('active');
+          t.setAttribute('aria-selected', 'false');
+          document.getElementById(t.getAttribute('aria-controls')).setAttribute('aria-hidden', 'true');
+          document.getElementById(t.getAttribute('aria-controls')).classList.remove('active');
+        });
+
+        // Активируем текущую кнопку и контент
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+        const content = document.getElementById(tab.getAttribute('aria-controls'));
+        content.classList.add('active');
+        content.setAttribute('aria-hidden', 'false');
+        content.focus();
+      });
+    });
+  </script>
+</body>
+</html>
+
 
 
