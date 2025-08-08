@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Никита Васильев — Интернет-маркетолог</title>
   <style>
-    /* --- Общие стили и темный режим --- */
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
     * {
@@ -93,7 +92,6 @@
       user-select: none;
     }
 
-    /* --- Контейнер --- */
     .resume-container {
       max-width: 1080px;
       margin: 0 auto;
@@ -103,7 +101,6 @@
       gap: 32px;
     }
 
-    /* --- Сайдбар --- */
     .sidebar {
       flex: 0 0 280px;
       background: #1e1e1e;
@@ -139,7 +136,6 @@
       text-align: center;
     }
 
-    /* Контакты */
     .contact-list {
       width: 100%;
       padding: 0;
@@ -162,7 +158,6 @@
       text-align: center;
     }
 
-    /* Секции в сайдбаре */
     .sidebar section {
       width: 100%;
       margin-bottom: 28px;
@@ -207,7 +202,6 @@
       user-select: none;
     }
 
-    /* Ссылка на Telegram */
     .telegram-link {
       display: inline-block;
       margin-top: 4px;
@@ -225,7 +219,6 @@
       outline: none;
     }
 
-    /* --- Контент --- */
     .content {
       flex: 1 1 auto;
       background: #1e1e1e;
@@ -237,7 +230,6 @@
       gap: 32px;
     }
 
-    /* Секции в контенте */
     .content section h2 {
       font-size: 1.8rem;
       margin-bottom: 16px;
@@ -246,7 +238,6 @@
       user-select: none;
     }
 
-    /* Опыт работы - временная линия */
     .timeline {
       display: flex;
       gap: 16px;
@@ -256,6 +247,22 @@
       overflow-x: auto;
       padding-bottom: 8px;
       user-select: none;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+      scrollbar-color: #004bb5 transparent;
+    }
+
+    .timeline::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .timeline::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .timeline::-webkit-scrollbar-thumb {
+      background-color: #004bb5;
+      border-radius: 10px;
     }
 
     .timeline-point {
@@ -271,6 +278,7 @@
       white-space: nowrap;
       border: 2px solid transparent;
       user-select: none;
+      border: none;
     }
 
     .timeline-point:hover,
@@ -289,7 +297,6 @@
       cursor: default;
     }
 
-    /* Блок с опытом */
     .timeline-item {
       background-color: #2a2a2a;
       border-radius: 12px;
@@ -323,14 +330,13 @@
       user-select: text;
     }
 
-    /* Кнопка подробнее */
     .btn-experience {
       align-self: flex-start;
       background-color: #004bb5;
       color: #e0e0e0;
       border: none;
       border-radius: 30px;
-      padding: 12px 28px;
+      padding: 14px 30px;
       cursor: pointer;
       font-weight: 600;
       font-size: 1rem;
@@ -340,6 +346,7 @@
       margin-bottom: 14px;
       text-transform: none;
       text-decoration: none;
+      white-space: nowrap;
     }
 
     .btn-experience:hover,
@@ -349,7 +356,6 @@
       box-shadow: 0 0 10px #82c7ffcc;
     }
 
-    /* Описание опыта */
     .experience-desc {
       max-height: 0;
       overflow: hidden;
@@ -357,10 +363,11 @@
       color: #c0caff;
       font-weight: 500;
       line-height: 1.4;
+      user-select: text;
     }
 
     .experience-desc.active {
-      max-height: 1000px; /* достаточно для раскрытия */
+      max-height: 1000px;
       margin-top: 8px;
     }
 
@@ -368,7 +375,6 @@
       margin-top: 0;
     }
 
-    /* Прогресс бары */
     .progress-bar {
       background-color: #333;
       border-radius: 10px;
@@ -395,7 +401,6 @@
       user-select: none;
     }
 
-    /* --- Навигация --- */
     nav {
       background-color: #1e1e1e;
       border-bottom: 2px solid #004bb5;
@@ -417,7 +422,7 @@
       -webkit-overflow-scrolling: touch;
       scrollbar-width: thin;
       scrollbar-color: #004bb5 transparent;
-      -ms-overflow-style: none; /* IE 10+ */
+      -ms-overflow-style: none;
     }
 
     nav .nav-links::-webkit-scrollbar {
@@ -451,7 +456,6 @@
       outline: none;
     }
 
-    /* Бургер меню - скрыто по умолчанию */
     .burger {
       display: none;
       flex-direction: column;
@@ -470,7 +474,6 @@
       transition: 0.3s ease;
     }
 
-    /* Мобильное меню скрыто */
     .nav-mobile {
       display: none;
       flex-direction: column;
@@ -490,13 +493,13 @@
       font-weight: 600;
       color: #4dabf7;
       border-bottom: 1px solid #004bb5;
+      user-select: none;
     }
 
     .nav-mobile a:last-child {
       border-bottom: none;
     }
 
-    /* Активное состояние бургера */
     .burger.active span:nth-child(1) {
       transform: rotate(45deg) translate(5px, 5px);
     }
@@ -507,7 +510,6 @@
       transform: rotate(-45deg) translate(5px, -5px);
     }
 
-    /* --- Кнопка Наверх --- */
     #btnTop {
       position: fixed;
       bottom: 32px;
@@ -533,8 +535,6 @@
       background-color: #1c75ff;
       outline: none;
     }
-
-    /* --- Адаптивность --- */
 
     @media (max-width: 900px) {
       .resume-container {
@@ -626,7 +626,7 @@
       <span></span>
       <span></span>
     </div>
-    <div id="nav-mobile" class="nav-mobile" role="menu" aria-hidden="true">
+    <div id="nav-mobile" class="nav-mobile" aria-hidden="true" role="menu">
       <a href="#about" role="menuitem" tabindex="-1">О себе</a>
       <a href="#experience" role="menuitem" tabindex="-1">Опыт работы</a>
       <a href="#education" role="menuitem" tabindex="-1">Образование</a>
@@ -900,9 +900,9 @@
     btnTop.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
-
   </script>
 </body>
 </html>
+
 
 
