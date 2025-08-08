@@ -1,12 +1,44 @@
-/* Аватар */
 .profile-img {
-  width: 160px;
-  height: 160px;
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
-  border: 6px solid #ffffff;
   object-fit: cover;
   margin-bottom: 15px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  animation: avatarFadeIn 1.2s ease forwards;
+  border: 6px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 20px rgba(0, 123, 255, 0.6), 0 0 40px rgba(0, 123, 255, 0.3);
+  transition: transform 0.4s ease;
+}
+
+.profile-img:hover {
+  transform: scale(1.05);
+}
+
+/* Анимация появления */
+@keyframes avatarFadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* "Дыхание" свечения */
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(0, 123, 255, 0.6), 0 0 40px rgba(0, 123, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(0, 123, 255, 0.8), 0 0 60px rgba(0, 123, 255, 0.4);
+  }
+}
+
+/* Применяем дыхание к аватару */
+.profile-img {
+  animation: avatarFadeIn 1.2s ease forwards, pulseGlow 3s infinite ease-in-out;
 }
 
 /* Hero header */
