@@ -217,7 +217,7 @@
       padding-left: 14px;
     }
     .experience-desc.active {
-      max-height: 2000px; /* достаточно большое значение для раскрытия */
+      max-height: 2000px;
       padding-left: 24px;
       margin-top: 12px;
     }
@@ -391,11 +391,11 @@
           <div class="timeline-point" tabindex="0" data-target="freelance-desc" aria-selected="false">Фриланс<br><small>02.2022 - 08.2022</small></div>
         </div>
 
-        <article class="timeline-item" role="listitem" aria-expanded="true" aria-controls="yamdiet-desc">
+        <article class="timeline-item" role="listitem" aria-expanded="false" aria-controls="yamdiet-desc" hidden>
           <h3>Трафик-менеджер — Компания Yamdiet</h3>
           <time datetime="2024-04 to 2025-06">Апрель 2024 — Июнь 2025 (1 год 3 месяца)</time>
-          <button class="btn-experience" aria-expanded="true" aria-controls="yamdiet-desc" aria-label="Подробнее про опыт работы в Yamdiet" onclick="toggleDesc('yamdiet-desc', this)">Подробнее</button>
-          <div id="yamdiet-desc" class="experience-desc active">
+          <button class="btn-experience" aria-expanded="false" aria-controls="yamdiet-desc" aria-label="Подробнее про опыт работы в Yamdiet" onclick="toggleDesc('yamdiet-desc', this)">Подробнее</button>
+          <div id="yamdiet-desc" class="experience-desc">
             <ul>
               <li>Настройка таргетированной рекламы (ВК, Яндекс директ, РСЯ)</li>
               <li>Работа с Яндекс метрикой</li>
@@ -435,7 +435,7 @@
               <li>Отчётность в конце периода</li>
               <li>Упаковка посадочных страниц</li>
               <li>Поиск и работа с подрядчиками, составление ТЗ</li>
-              <li>Разработка воронок продаж и анализ воронок</li>
+              <li>Разработка и анализ воронок продаж</li>
               <li>Работа с чат-ботами, подписными страницами (Senler)</li>
               <li>Работа в Miro, Excel</li>
               <li>Навык дизайна Ui/Ux в Figma</li>
@@ -510,7 +510,7 @@
   </div>
 
   <script>
-    // Логика переключения опыта работы
+    // Логика переключения опыта работы по временной линии
     const timelinePoints = document.querySelectorAll('.timeline-point');
     const timelineItems = document.querySelectorAll('.timeline-item');
 
@@ -529,9 +529,9 @@
           const descId = item.querySelector('button').getAttribute('aria-controls');
           if (descId === targetId) {
             item.removeAttribute('hidden');
-            item.setAttribute('aria-expanded', 'true');
-            item.querySelector('.experience-desc').classList.add('active');
-            item.querySelector('button').setAttribute('aria-expanded', 'true');
+            item.setAttribute('aria-expanded', 'false');
+            item.querySelector('.experience-desc').classList.remove('active');
+            item.querySelector('button').setAttribute('aria-expanded', 'false');
           } else {
             item.setAttribute('hidden', '');
             item.setAttribute('aria-expanded', 'false');
@@ -549,7 +549,7 @@
       });
     });
 
-    // Функция для кнопок "Подробнее"
+    // Функция для кнопок "Подробнее" (теперь раскрывает/закрывает описание)
     function toggleDesc(descId, button) {
       const desc = document.getElementById(descId);
       const expanded = button.getAttribute('aria-expanded') === 'true';
@@ -564,11 +564,28 @@
       }
     }
 
-    // Анимация прогресс-баров
-    window.addEventListener('load', () => {
-      document.querySelectorAll('.progress').forEach(bar => {
+    // Анимация прогресс-баров при раскрытии
+    function animateProgressBars(container) {
+      const bars = container.querySelectorAll('.progress');
+      bars.forEach(bar => {
         const width = bar.getAttribute('data-progress');
         bar.style.width = width;
+      });
+    }
+
+    // Анимация прогресс-баров при раскрытии блока опыта
+    document.querySelectorAll('.btn-experience').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const descId = btn.getAttribute('aria-controls');
+        const desc = document.getElementById(descId);
+        if (desc.classList.contains('active')) {
+          animateProgressBars(desc);
+        } else {
+          // Если скрываем, сбрасываем ширину прогресс-баров
+          desc.querySelectorAll('.progress').forEach(bar => {
+            bar.style.width = '0';
+          });
+        }
       });
     });
   </script>
