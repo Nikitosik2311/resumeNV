@@ -96,6 +96,31 @@
     margin: 6px 0 15px;
   }
 
+  /* Telegram кнопка */
+  .telegram-btn {
+    display: inline-flex;
+    align-items: center;
+    background: #0088cc;
+    color: white;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+    margin-top: 6px;
+    user-select: none;
+    transition: background-color 0.3s ease;
+  }
+  .telegram-btn:hover {
+    background: #006699;
+  }
+  .telegram-btn svg {
+    width: 18px;
+    height: 18px;
+    margin-right: 6px;
+    fill: white;
+  }
+
   /* Правая колонка */
   .content {
     flex-grow: 1;
@@ -141,6 +166,12 @@
     margin-bottom: 9px;
     font-weight: 500;
     font-size: 15px;
+  }
+  .work-dates {
+    font-size: 14px;
+    font-style: italic;
+    color: #555;
+    margin-bottom: 10px;
   }
 
   /* Вкладки опыта работы */
@@ -266,7 +297,12 @@
       <ul>
         <li>📞 8-(985)-422-97-39</li>
         <li>📧 Vasilevnik05@mail.ru</li>
-        <li>💬 @Vasilieeev11</li>
+        <li>
+          💬 <a href="https://t.me/Vasilieeev11" target="_blank" rel="noopener" class="telegram-btn" aria-label="Telegram Никиты Васильева">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M22.46 2.62c-.8-.5-1.73-.36-2.37.36L2.98 17.14l-1.7-6.05a1.8 1.8 0 0 0-.57-1 1.88 1.88 0 0 0-1.28-.43 1.9 1.9 0 0 0-1.87 1.99 1.9 1.9 0 0 0 .43 1.28c.3.35.72.57 1.16.57.3 0 .59-.1.82-.3l5.8-4.53 4.96 4.95c.48.48 1.28.46 1.73-.08a1.8 1.8 0 0 0 .37-1.43l-1.27-6.3 5.3-7.66a1.69 1.69 0 0 0-.4-2.26z"/></svg>
+            @Vasilieeev11
+          </a>
+        </li>
         <li>📍 Москва</li>
       </ul>
       <p class="salary">💰 От 80 000 руб</p>
@@ -297,6 +333,7 @@
 
       <div id="tab1" class="tab-content active" role="tabpanel" aria-labelledby="tab1-btn">
         <h3>Трафик-менеджер</h3>
+        <p class="work-dates">Апрель 2024 - Июнь 2025 — 1 год 3 месяца</p>
         <p><em>Компания Yamdiet</em></p>
         <ul>
           <li>Настройка таргетированной рекламы (ВК, Яндекс директ, РСЯ)</li>
@@ -317,6 +354,7 @@
 
       <div id="tab2" class="tab-content" role="tabpanel" aria-labelledby="tab2-btn">
         <h3>Digital-маркетолог</h3>
+        <p class="work-dates">Май 2023 - Март 2024 — 11 месяцев</p>
         <p><em>Компания Job for Arabists</em></p>
         <ul>
           <li>Разработка маркетинговой стратегии</li>
@@ -336,6 +374,7 @@
 
       <div id="tab3" class="tab-content" role="tabpanel" aria-labelledby="tab3-btn">
         <h3>Продюсер онлайн-школы</h3>
+        <p class="work-dates">Август 2022 - Май 2023 — 10 месяцев</p>
         <p><em>Фриланс проект</em></p>
         <ul>
           <li>Полный запуск инфопродуктов</li>
@@ -357,6 +396,7 @@
 
       <div id="tab4" class="tab-content" role="tabpanel" aria-labelledby="tab4-btn">
         <h3>Таргетолог / Директолог / Контекстолог</h3>
+        <p class="work-dates">Февраль 2022 - Август 2022 — 7 месяцев</p>
         <p><em>Работа на фрилансе</em></p>
         <ul>
           <li>Профессиональная настройка и ведение таргетированной рекламы (VK, Facebook, Instagram, Яндекс.Директ, Google Ads)</li>
@@ -434,5 +474,7 @@
   });
 </script>
 
-</body
+</body>
+</html>
+
 
