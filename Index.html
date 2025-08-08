@@ -21,7 +21,7 @@
 
     .resume-container {
       max-width: 960px;
-      margin: 40px auto 60px;
+      margin: 100px auto 60px;
       background: #fff;
       box-shadow: 0 0 20px rgba(0,0,0,0.12);
       display: flex;
@@ -136,7 +136,7 @@
 
     main.content ul {
       list-style: none;
-      padding-left: 28px; /* Отступ для стрелочек */
+      padding-left: 28px;
       margin-top: 0;
     }
 
@@ -194,7 +194,7 @@
 
     .tab-button {
       background: none;
-      border: none;
+      border: 2px solid transparent;
       padding: 14px 26px;
       cursor: pointer;
       font-weight: 600;
@@ -204,10 +204,14 @@
       font-size: 1.1em;
       border-radius: 6px 6px 0 0;
       user-select: none;
+      outline-offset: 2px;
     }
 
-    .tab-button:hover {
+    .tab-button:hover,
+    .tab-button:focus {
       color: #2980b9;
+      border-color: #2980b9;
+      outline: none;
     }
 
     .tab-button.active {
@@ -215,6 +219,7 @@
       color: #2980b9;
       font-weight: 700;
       background: #ecf6fd;
+      border-color: #2980b9;
     }
 
     .tab-content {
@@ -237,13 +242,15 @@
     /* Navigation */
     nav {
       text-align: center;
-      margin-bottom: 40px;
+      margin: 0;
       background: #2980b9;
       padding: 15px 0;
-      position: sticky;
+      position: fixed;
       top: 0;
-      z-index: 1000;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      width: 100%;
+      z-index: 10000;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      user-select: none;
     }
 
     nav a {
@@ -253,11 +260,14 @@
       font-weight: 600;
       font-size: 1.15em;
       transition: color 0.3s ease;
-      user-select: none;
+      cursor: pointer;
     }
 
-    nav a:hover {
+    nav a:hover,
+    nav a:focus {
       color: #f39c12;
+      outline: none;
+      text-decoration: underline;
     }
 
     /* Back to top button */
@@ -311,7 +321,7 @@
     @media (max-width: 920px) {
       .resume-container {
         flex-direction: column;
-        margin: 20px auto 40px;
+        margin: 80px auto 40px;
         max-width: 90%;
       }
       aside.sidebar {
@@ -367,14 +377,14 @@
 <body>
 
   <!-- Навигация -->
-  <nav>
-    <a href="#about">О себе</a>
-    <a href="#experience">Опыт работы</a>
-    <a href="#skills">Навыки</a>
-    <a href="#contacts">Контакты</a>
+  <nav role="navigation" aria-label="Главное меню">
+    <a href="#about" tabindex="0">О себе</a>
+    <a href="#experience" tabindex="0">Опыт работы</a>
+    <a href="#skills" tabindex="0">Навыки</a>
+    <a href="#contacts" tabindex="0">Контакты</a>
   </nav>
 
-  <div class="resume-container">
+  <div class="resume-container" role="main">
 
     <!-- Левая колонка -->
     <aside class="sidebar" data-aos="fade-right">
@@ -430,7 +440,7 @@
 
       <div class="social-icons" data-aos="fade-up" data-aos-delay="500">
         <a href="https://t.me/vnezap11" target="_blank" rel="noopener noreferrer" class="icon-link" title="Telegram">
-          <img src="telegram.png" alt="Telegram" />
+          <img src="telegram.svg" alt="Telegram" />
         </a>
       </div>
     </aside>
@@ -438,7 +448,7 @@
     <!-- Правая колонка -->
     <main class="content" data-aos="fade-left">
 
-      <h1 class="typewriter">Интернет-маркетолог Никита Васильев</h1>
+      <h1 class="typewriter" aria-label="Интернет-маркетолог Никита Васильев">Интернет-маркетолог Никита Васильев</h1>
 
       <section id="about" data-aos="fade-up">
         <h2>О себе</h2>
@@ -448,14 +458,14 @@
       <section id="experience" data-aos="fade-up" data-aos-delay="100">
         <h2>Опыт работы</h2>
 
-        <div class="tabs" role="tablist">
-          <button class="tab-button active" data-tab="yamdiet" role="tab" aria-selected="true" aria-controls="yamdiet">Трафик-менеджер Yamdiet</button>
-          <button class="tab-button" data-tab="jobforarabists" role="tab" aria-selected="false" aria-controls="jobforarabists">Digital-маркетолог Job for Arabists</button>
-          <button class="tab-button" data-tab="producer" role="tab" aria-selected="false" aria-controls="producer">Продюсер онлайн-школы</button>
-          <button class="tab-button" data-tab="freelance" role="tab" aria-selected="false" aria-controls="freelance">Таргетолог / Контекстолог (Фриланс)</button>
+        <div class="tabs" role="tablist" aria-label="Опыт работы: переключение между позициями">
+          <button class="tab-button active" data-tab="yamdiet" role="tab" aria-selected="true" aria-controls="yamdiet" id="tab-yamdiet" tabindex="0">Трафик-менеджер Yamdiet</button>
+          <button class="tab-button" data-tab="jobforarabists" role="tab" aria-selected="false" aria-controls="jobforarabists" id="tab-jobforarabists" tabindex="0">Digital-маркетолог Job for Arabists</button>
+          <button class="tab-button" data-tab="producer" role="tab" aria-selected="false" aria-controls="producer" id="tab-producer" tabindex="0">Продюсер онлайн-школы</button>
+          <button class="tab-button" data-tab="freelance" role="tab" aria-selected="false" aria-controls="freelance" id="tab-freelance" tabindex="0">Таргетолог / Контекстолог (Фриланс)</button>
         </div>
 
-        <div class="tab-content active" id="yamdiet" role="tabpanel" tabindex="0">
+        <div class="tab-content active" id="yamdiet" role="tabpanel" tabindex="0" aria-labelledby="tab-yamdiet">
           <h3>Трафик-менеджер, Компания Yamdiet (Москва и Московская область)</h3>
           <p><em>Апрель 2024 — Июнь 2025 (1 год 3 месяца)</em></p>
           <ul>
@@ -469,106 +479,10 @@
           </ul>
         </div>
 
-        <div class="tab-content" id="jobforarabists" role="tabpanel" tabindex="0" aria-hidden="true">
+        <div class="tab-content" id="jobforarabists" role="tabpanel" tabindex="0" aria-labelledby="tab-jobforarabists" aria-hidden="true">
           <h3>Digital-маркетолог, Job for Arabists (Бюро переводов)</h3>
           <p><em>Май 2023 — Март 2024 (11 месяцев)</em></p>
           <ul>
-            <li>Разработка и реализация маркетинговой стратегии для увеличения доли рынка в B2B.</li>
-            <li>Внедрение KPI по новым контрактам, среднему чеку, затратам и качеству лидов.</li>
-            <li>Увеличение лидогенерации на 35% за счёт цифровых кампаний (таргетинг, SEO, контент-маркетинг).</li>
-            <li>Автоматизация отчётности и аналитики для ускорения решений руководства.</li>
-          </ul>
-        </div>
+            <li>Разработка и реализация маркетинговой стратегии для увеличения доли рынка в B2B
 
-        <div class="tab-content" id="producer" role="tabpanel" tabindex="0" aria-hidden="true">
-          <h3>Продюсер онлайн-школы (Инфопродукт, психология)</h3>
-          <p><em>Август 2022 — Май 2023 (10 месяцев)</em></p>
-          <ul>
-            <li>Полный запуск инфопродуктов: стратегия, контент, маркетинг и техподдержка.</li>
-            <li>Настройка таргетированной рекламы с ROI до 140%.</li>
-            <li>Разработка воронок продаж и сценариев вебинаров для удержания клиентов.</li>
-            <li>Ведение KPI по количеству лидов, стоимостью привлечения и конверсии в покупку.</li>
-          </ul>
-        </div>
-
-        <div class="tab-content" id="freelance" role="tabpanel" tabindex="0" aria-hidden="true">
-          <h3>Таргетолог / Контекстолог / Директолог (Фриланс)</h3>
-          <p><em>Февраль 2022 — Август 2022 (7 месяцев)</em></p>
-          <ul>
-            <li>Настройка рекламных кампаний в Яндекс.Директ, Google Ads, VK, Telegram.</li>
-            <li>Оптимизация бюджета и повышение ROI на 20%+ по разным нишам.</li>
-            <li>Создание и тестирование рекламных креативов, написание продающих текстов.</li>
-            <li>Работа с аналитикой и сквозной отчётностью для клиентов.</li>
-          </ul>
-        </div>
-      </section>
-
-      <section id="skills" data-aos="fade-up" data-aos-delay="150">
-        <h2>Курсы</h2>
-        <ul>
-          <li>Интернет-маркетинг — Intelsib</li>
-          <li>Маркетинговые исследования — MAED</li>
-          <li>Таргетированная реклама — Эдуард Мухин</li>
-          <li>Медиапланирование — Филипп Царевский</li>
-          <li>Agile Project Management — Coursera (University of Virginia)</li>
-        </ul>
-      </section>
-
-    </main>
-
-  </div>
-
-  <button id="backToTop" title="Наверх" aria-label="Наверх">&#8679;</button>
-
-  <!-- AOS JS -->
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    AOS.init({
-      once: true,
-      duration: 700,
-      easing: 'ease-in-out'
-    });
-
-    // Табы
-    document.querySelectorAll('.tab-button').forEach(button => {
-      button.addEventListener('click', () => {
-        const tab = button.getAttribute('data-tab');
-
-        document.querySelectorAll('.tab-button').forEach(btn => {
-          btn.classList.toggle('active', btn === button);
-          btn.setAttribute('aria-selected', btn === button ? 'true' : 'false');
-        });
-
-        document.querySelectorAll('.tab-content').forEach(content => {
-          content.classList.toggle('active', content.id === tab);
-          content.setAttribute('aria-hidden', content.id !== tab);
-        });
-      });
-    });
-
-    // Плавная прокрутка навигации
-    document.querySelectorAll('nav a').forEach(anchor => {
-      anchor.addEventListener('click', function(e){
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
-        });
-      });
-    });
-
-    // Кнопка "Наверх"
-    const backToTop = document.getElementById('backToTop');
-    window.addEventListener('scroll', () => {
-      if(window.pageYOffset > 300) {
-        backToTop.style.display = 'block';
-      } else {
-        backToTop.style.display = 'none';
-      }
-    });
-    backToTop.addEventListener('click', () => {
-      window.scrollTo({top: 0, behavior: 'smooth'});
-    });
-  </script>
-</body>
-</html>
 
