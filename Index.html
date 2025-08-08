@@ -1,479 +1,486 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Никита Васильев — Интернет-маркетолог</title>
-<style>
-  /* Сброс */
-  * {
-    box-sizing: border-box;
-  }
-  body {
-    margin: 0;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #e3eafc, #c5d0f9);
-    color: #222;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 40px 20px;
-  }
-  .resume-container {
-    background: rgba(255 255 255 / 0.85);
-    max-width: 1000px;
-    width: 100%;
-    display: flex;
-    border-radius: 14px;
-    box-shadow: 0 16px 40px rgba(0,0,0,0.12);
-    overflow: hidden;
-    backdrop-filter: saturate(180%) blur(18px);
-    -webkit-backdrop-filter: saturate(180%) blur(18px);
-    animation: fadeInUp 1s ease forwards;
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Никита Васильев — Интернет-маркетолог</title>
 
-  /* Левая колонка */
-  .sidebar {
-    background: #1f3c88;
-    color: white;
-    padding: 40px 30px;
-    width: 320px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .sidebar img.avatar {
-    width: 140px;
-    height: 140px;
-    object-fit: cover;
-    border: 3px solid #fff;
-    border-radius: 6px; /* строгое, не круг */
-    box-shadow: 0 4px 14px rgba(0,0,0,0.3);
-    margin-bottom: 25px;
-    animation: popIn 0.8s ease forwards;
-    opacity: 0;
-  }
-  .sidebar img.avatar.visible {
-    opacity: 1;
-  }
-  .sidebar h1 {
-    font-size: 28px;
-    margin: 0 0 6px;
-    font-weight: 700;
-    text-align: center;
-  }
-  .sidebar p.title {
-    margin: 0 0 30px;
-    font-size: 18px;
-    font-weight: 500;
-    opacity: 0.85;
-    text-align: center;
-  }
-  .sidebar h2 {
-    font-weight: 600;
-    font-size: 16px;
-    border-bottom: 1px solid rgba(255 255 255 / 0.4);
-    width: 100%;
-    padding-bottom: 6px;
-    margin-bottom: 14px;
-  }
-  .sidebar ul {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 20px;
-    width: 100%;
-  }
-  .sidebar ul li {
-    margin-bottom: 10px;
-    font-weight: 500;
-    font-size: 14.5px;
-  }
-  .sidebar p.salary,
-  .sidebar p.job-type {
-    font-weight: 600;
-    font-size: 15px;
-    margin: 6px 0 15px;
-  }
+  <!-- AOS CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
 
-  /* Telegram кнопка */
-  .telegram-btn {
-    display: inline-flex;
-    align-items: center;
-    background: #0088cc;
-    color: white;
-    padding: 6px 14px;
-    border-radius: 20px;
-    font-weight: 600;
-    font-size: 14px;
-    text-decoration: none;
-    margin-top: 6px;
-    user-select: none;
-    transition: background-color 0.3s ease;
-  }
-  .telegram-btn:hover {
-    background: #006699;
-  }
-  .telegram-btn svg {
-    width: 18px;
-    height: 18px;
-    margin-right: 6px;
-    fill: white;
-  }
+  <style>
+    /* Общие стили */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0; padding: 0;
+      background: #f9f9f9;
+      color: #333;
+      line-height: 1.6;
+    }
 
-  /* Правая колонка */
-  .content {
-    flex-grow: 1;
-    background: rgba(255 255 255 / 0.9);
-    padding: 40px 50px;
-    overflow-y: auto;
-  }
-  .content section {
-    margin-bottom: 40px;
-    opacity: 0;
-    transform: translateY(25px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
-  .content section.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  .content h2 {
-    font-size: 22px;
-    font-weight: 700;
-    margin-bottom: 12px;
-    color: #1f3c88;
-    border-bottom: 2px solid #1f3c88;
-    padding-bottom: 6px;
-  }
-  .content h3 {
-    font-size: 18px;
-    margin: 0 0 8px;
-    font-weight: 600;
-    color: #333;
-  }
-  .content p {
-    font-size: 15px;
-    line-height: 1.55;
-    margin: 8px 0 15px;
-  }
-  .content ul {
-    list-style: none;
-    padding-left: 0;
-    margin: 0 0 15px 0;
-  }
-  .content ul li {
-    margin-bottom: 9px;
-    font-weight: 500;
-    font-size: 15px;
-  }
-  .work-dates {
-    font-size: 14px;
-    font-style: italic;
-    color: #555;
-    margin-bottom: 10px;
-  }
-
-  /* Вкладки опыта работы */
-  .tabs {
-    display: flex;
-    gap: 14px;
-    margin-bottom: 25px;
-    flex-wrap: wrap;
-  }
-  .tab-btn {
-    background: #e3eafc;
-    border: 2px solid transparent;
-    padding: 10px 18px;
-    font-weight: 600;
-    font-size: 15px;
-    color: #1f3c88;
-    border-radius: 8px;
-    cursor: pointer;
-    user-select: none;
-    transition: background-color 0.3s ease, border-color 0.3s ease;
-  }
-  .tab-btn:hover {
-    background: #c5d0f9;
-  }
-  .tab-btn.active {
-    background: #1f3c88;
-    color: white;
-    border-color: #15407e;
-  }
-
-  .tab-content {
-    display: none;
-  }
-  .tab-content.active {
-    display: block;
-  }
-
-  /* Кнопка скачать (закомментирована) */
-  .download-btn {
-    display: inline-block;
-    padding: 10px 18px;
-    background-color: #1f3c88;
-    color: white;
-    font-weight: 600;
-    border-radius: 8px;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-    margin-bottom: 30px;
-  }
-  .download-btn:hover {
-    background-color: #3b5cd1;
-  }
-
-  /* Анимации */
-  @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(30px);}
-    to { opacity: 1; transform: translateY(0);}
-  }
-  @keyframes popIn {
-    from { opacity: 0; transform: scale(0.8);}
-    to { opacity: 1; transform: scale(1);}
-  }
-
-  /* Адаптив */
-  @media(max-width: 850px){
     .resume-container {
-      flex-direction: column;
-      max-width: 95vw;
-      margin: 20px auto;
+      max-width: 960px;
+      margin: 40px auto;
+      background: #fff;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      display: flex;
+      border-radius: 8px;
+      overflow: hidden;
+      flex-wrap: wrap;
     }
-    .sidebar {
-      width: 100%;
-      padding: 25px 20px 30px;
-      flex-direction: row;
-      align-items: center;
-      justify-content: flex-start;
-      gap: 20px;
+
+    /* Sidebar */
+    aside.sidebar {
+      flex: 1 1 280px;
+      background: #2c3e50;
+      color: #ecf0f1;
+      padding: 30px 20px;
+      min-width: 280px;
     }
-    .sidebar img.avatar {
-      width: 110px;
-      height: 110px;
-      border-radius: 6px;
-      margin-bottom: 0;
+
+    aside.sidebar .avatar {
+      width: 140px;
+      border-radius: 50%;
+      display: block;
+      margin: 0 auto 20px auto;
+      border: 3px solid #ecf0f1;
     }
-    .sidebar h1, .sidebar p.title {
-      text-align: left;
+
+    aside.sidebar .name {
+      text-align: center;
+      margin-bottom: 5px;
+      font-size: 1.8em;
+      font-weight: 700;
+    }
+
+    aside.sidebar .title {
+      text-align: center;
+      font-style: italic;
+      margin-bottom: 25px;
+      font-size: 1.1em;
+      color: #bdc3c7;
+    }
+
+    aside.sidebar h2 {
+      border-bottom: 1px solid #34495e;
+      padding-bottom: 6px;
+      margin-top: 30px;
+      margin-bottom: 12px;
+      font-weight: 600;
+      font-size: 1.1em;
+    }
+
+    aside.sidebar ul {
+      list-style: none;
+      padding-left: 0;
       margin: 0;
     }
-    .sidebar h1 {
-      font-size: 24px;
+
+    aside.sidebar ul li, aside.sidebar p {
+      margin-bottom: 10px;
+      font-size: 0.95em;
     }
-    .sidebar p.title {
-      font-size: 14px;
-      opacity: 0.8;
+
+    aside.sidebar .contact-list li {
+      display: flex;
+      align-items: center;
     }
-    .sidebar section,
-    .sidebar ul,
-    .sidebar p.salary,
-    .sidebar p.job-type,
-    .sidebar h2 {
-      display: none; /* скрываем контакты и все остальное в мобилке для лаконичности */
+
+    /* Content area */
+    main.content {
+      flex: 2 1 600px;
+      padding: 30px 40px;
+      background: #fff;
+      min-width: 300px;
     }
-    .content {
-      padding: 20px;
+
+    main.content section {
+      margin-bottom: 30px;
     }
-  }
-</style>
+
+    main.content h2 {
+      font-size: 1.5em;
+      margin-bottom: 15px;
+      color: #2c3e50;
+      border-bottom: 2px solid #2980b9;
+      padding-bottom: 6px;
+    }
+
+    main.content h3 {
+      margin-bottom: 8px;
+      color: #34495e;
+      font-weight: 600;
+    }
+
+    main.content ul {
+      list-style: none;
+      padding-left: 20px;
+    }
+
+    main.content ul li {
+      margin-bottom: 8px;
+      position: relative;
+    }
+    main.content ul li::before {
+      content: "»";
+      color: #2980b9;
+      position: absolute;
+      left: 0;
+    }
+
+    /* Typewriter effect */
+    .typewriter {
+      overflow: hidden;
+      border-right: .15em solid #2980b9;
+      white-space: nowrap;
+      animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+      font-family: monospace;
+      font-size: 2em;
+      font-weight: 700;
+      color: #2980b9;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink-caret {
+      from, to { border-color: transparent }
+      50% { border-color: #2980b9; }
+    }
+
+    /* Tabs styles */
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #2980b9;
+    }
+
+    .tab-button {
+      background: none;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-weight: 600;
+      color: #555;
+      border-bottom: 3px solid transparent;
+      transition: all 0.3s ease;
+      font-size: 1em;
+    }
+
+    .tab-button:hover {
+      color: #2980b9;
+    }
+
+    .tab-button.active {
+      border-bottom-color: #2980b9;
+      color: #2980b9;
+      font-weight: 700;
+    }
+
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.5s ease forwards;
+      color: #444;
+      font-size: 1em;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    /* Navigation */
+    nav {
+      text-align: center;
+      margin-bottom: 40px;
+      background: #2980b9;
+      padding: 12px 0;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 18px;
+      font-weight: 600;
+      font-size: 1.05em;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #f39c12;
+    }
+
+    /* Back to top button */
+    #backToTop {
+      display: none;
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: #2980b9;
+      color: #fff;
+      border: none;
+      padding: 12px 15px;
+      border-radius: 50%;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      transition: background 0.3s ease;
+      z-index: 100;
+    }
+
+    #backToTop:hover {
+      background: #f39c12;
+    }
+
+    /* Social icons */
+    .social-icons {
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    .icon-link {
+      display: inline-block;
+      margin: 0 10px;
+      transition: transform 0.3s ease, filter 0.3s ease;
+    }
+
+    .icon-link img {
+      width: 32px;
+      vertical-align: middle;
+    }
+
+    .icon-link:hover {
+      transform: scale(1.2);
+      filter: drop-shadow(0 0 8px #2980b9);
+    }
+  </style>
 </head>
 <body>
 
-<div class="resume-container">
+  <!-- Навигация -->
+  <nav>
+    <a href="#about">О себе</a>
+    <a href="#experience">Опыт работы</a>
+    <a href="#skills">Навыки</a>
+    <a href="#contacts">Контакты</a>
+  </nav>
 
-  <!-- Левая колонка -->
-  <aside class="sidebar">
-    <img src="avatar.png" alt="Фото Никиты Васильева" class="avatar" id="avatar" />
-    <div>
-      <h1>Никита Васильев</h1>
+  <div class="resume-container">
+
+    <!-- Левая колонка -->
+    <aside class="sidebar" data-aos="fade-right">
+      <img src="avatar.png" alt="Фото Никиты Васильева" class="avatar" />
+      <h1 class="name">Никита Васильев</h1>
       <p class="title">Интернет-маркетолог</p>
-    </div>
 
-    <section>
-      <h2>Контакты</h2>
-      <ul>
-        <li>📞 8-(985)-422-97-39</li>
-        <li>📧 Vasilevnik05@mail.ru</li>
-        <li>
-          💬 <a href="https://t.me/Vasilieeev11" target="_blank" rel="noopener" class="telegram-btn" aria-label="Telegram Никиты Васильева">
-            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M22.46 2.62c-.8-.5-1.73-.36-2.37.36L2.98 17.14l-1.7-6.05a1.8 1.8 0 0 0-.57-1 1.88 1.88 0 0 0-1.28-.43 1.9 1.9 0 0 0-1.87 1.99 1.9 1.9 0 0 0 .43 1.28c.3.35.72.57 1.16.57.3 0 .59-.1.82-.3l5.8-4.53 4.96 4.95c.48.48 1.28.46 1.73-.08a1.8 1.8 0 0 0 .37-1.43l-1.27-6.3 5.3-7.66a1.69 1.69 0 0 0-.4-2.26z"/></svg>
-            @Vasilieeev11
-          </a>
-        </li>
-        <li>📍 Москва</li>
-      </ul>
-      <p class="salary">💰 От 80 000 руб</p>
-      <p class="job-type">🕒 Fulltime / удалёнка</p>
-    </section>
-  </aside>
-
-  <!-- Правая колонка -->
-  <main class="content">
-    <!--
-    <a href="resume.pdf" download class="download-btn" aria-label="Скачать резюме в PDF">⬇ Скачать PDF</a>
-    -->
-
-    <section>
-      <h2>О себе</h2>
-      <p>Опытный интернет-маркетолог с более чем 3-летним стажем. Специализируюсь на привлечении трафика, оптимизации воронок, аналитике и партнёрском маркетинге. Умею стратегически мыслить, работать в команде и масштабировать проекты.</p>
-    </section>
-
-    <section>
-      <h2>Опыт работы</h2>
-
-      <div class="tabs" role="tablist" aria-label="Опыт работы - позиции">
-        <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="tab1" id="tab1-btn">Трафик-менеджер</button>
-        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab2" id="tab2-btn">Digital-маркетолог</button>
-        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab3" id="tab3-btn">Продюсер онлайн-школы</button>
-        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab4" id="tab4-btn">Таргетолог/Директолог</button>
-      </div>
-
-      <div id="tab1" class="tab-content active" role="tabpanel" aria-labelledby="tab1-btn">
-        <h3>Трафик-менеджер</h3>
-        <p class="work-dates">Апрель 2024 - Июнь 2025 — 1 год 3 месяца</p>
-        <p><em>Компания Yamdiet</em></p>
-        <ul>
-          <li>Настройка таргетированной рекламы (ВК, Яндекс директ, РСЯ)</li>
-          <li>Работа с Яндекс метрикой</li>
-          <li>Работа с CPA-сетями (Admitad, cityads, bestbenefits)</li>
-          <li>Работа с партнерами</li>
-          <li>Продвижение Т-банк бизнес, Альфа таргет</li>
-          <li>Работа со статьями на Дзен, VC.RU</li>
-          <li>Работа с CRM системой, выгрузкой отчетов, анализ отчётов, контроль отдела продаж, прослушивание звонков</li>
-          <li>Работа с дизайнерами, есть навыки работы в Figma (любительский уровень)</li>
-          <li>Создание КП для партнеров</li>
-          <li>Работа с CEO (разработка стратегии расширения SEO трафика, анализ текущего состояния SEO и конкурентов, создание ТЗ для SEO)</li>
-          <li>Оценка качества взаимодействия с клиентами (скорость ответа, понятность интерфейса, выбранные сервисы для взаимодействия)</li>
-          <li>Проведение ревизии всех точек контакта (сайт, приложение, email, соцсети, доставка, телефоны клиентов)</li>
-          <li>Работа с программой лояльности</li>
+      <section id="contacts">
+        <h2>Контакты</h2>
+        <ul class="contact-list">
+          <li>📞 8-(985)-422-97-39</li>
+          <li>📧 Vasilevnik05@mail.ru</li>
+          <li>💬 <a href="https://t.me/vnezap11" target="_blank" style="color:#ecf0f1; text-decoration:none;">@vnezap11</a></li>
+          <li>📍 Москва</li>
         </ul>
-      </div>
+        <p>💰 От 80 000 руб</p>
+        <p>🕒 Готов к full-time, удалённо, без офиса</p>
+      </section>
 
-      <div id="tab2" class="tab-content" role="tabpanel" aria-labelledby="tab2-btn">
-        <h3>Digital-маркетолог</h3>
-        <p class="work-dates">Май 2023 - Март 2024 — 11 месяцев</p>
-        <p><em>Компания Job for Arabists</em></p>
+      <section data-aos="fade-left" data-aos-delay="100">
+        <h2>Языки</h2>
+        <p>Английский — B1</p>
+      </section>
+
+      <section data-aos="fade-left" data-aos-delay="200">
+        <h2>Навыки</h2>
         <ul>
-          <li>Разработка маркетинговой стратегии</li>
-          <li>Продвижение (Таргет ВК, Яндекс директ, ТГ Ads, посевы, FB)</li>
-          <li>Разработка карт CJM, Service BluePrint</li>
-          <li>Анализ конкурентов</li>
-          <li>Отчётность в конце периода</li>
-          <li>Упаковка посадочных страниц</li>
-          <li>Поиск и работа с подрядчиками и высылание ТЗ</li>
-          <li>Разработка воронок продаж</li>
-          <li>Анализ воронок продаж</li>
-          <li>Работа с чат-ботами, подписными страницами такие как Senler</li>
-          <li>Работа в Miro, Excel</li>
-          <li>Есть навык дизайна UI/UX в Figma</li>
+          <li>Таргетированная реклама (VK, Яндекс Директ, Telegram Ads)</li>
+          <li>Яндекс.Метрика, Google Analytics 4</li>
+          <li>CPA-сети (Admitad, Cityads, BestBenefits)</li>
+          <li>Контент-маркетинг (Дзен, VC.ru)</li>
+          <li>CRM: Bitrix24, AmoCRM, HubSpot</li>
+          <li>Figma (любительский уровень)</li>
+          <li>Создание коммерческих предложений</li>
+          <li>Разработка программ лояльности</li>
         </ul>
-      </div>
+      </section>
 
-      <div id="tab3" class="tab-content" role="tabpanel" aria-labelledby="tab3-btn">
-        <h3>Продюсер онлайн-школы</h3>
-        <p class="work-dates">Август 2022 - Май 2023 — 10 месяцев</p>
-        <p><em>Фриланс проект</em></p>
+      <section data-aos="fade-left" data-aos-delay="300">
+        <h2>Качества</h2>
         <ul>
-          <li>Полный запуск инфопродуктов</li>
-          <li>Написание контент плана</li>
-          <li>Разработка стратегии запуска</li>
-          <li>Работа и поиск подрядчиков</li>
-          <li>Составление ТЗ для подрядчиков</li>
-          <li>Разработка посадочных страниц</li>
-          <li>Техническая настройка вебинаров</li>
-          <li>Написание продажных текстов</li>
-          <li>Настройка таргетированной рекламы</li>
-          <li>Посевы</li>
-          <li>Настройка Яндекс Директ / РСЯ / Контекстная реклама</li>
-          <li>Работа с TG ads</li>
-          <li>Подключение платёжных систем</li>
-          <li>Расчёт декомпозиции запуска</li>
+          <li>Стратегическое мышление</li>
+          <li>Ответственность и инициативность</li>
+          <li>Коммуникабельность</li>
+          <li>Управление командой</li>
         </ul>
-      </div>
+      </section>
 
-      <div id="tab4" class="tab-content" role="tabpanel" aria-labelledby="tab4-btn">
-        <h3>Таргетолог / Директолог / Контекстолог</h3>
-        <p class="work-dates">Февраль 2022 - Август 2022 — 7 месяцев</p>
-        <p><em>Работа на фрилансе</em></p>
+      <section data-aos="fade-left" data-aos-delay="400">
+        <h2>Хобби</h2>
+        <p>Спортзал, чтение книг</p>
+      </section>
+      
+      <div class="social-icons" data-aos="fade-up" data-aos-delay="500">
+        <a href="https://t.me/vnezap11" target="_blank" class="icon-link" title="Telegram">
+          <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram" />
+        </a>
+        <!-- Можешь добавить другие иконки здесь -->
+      </div>
+    </aside>
+
+    <!-- Правая колонка -->
+    <main class="content" data-aos="fade-left">
+
+      <h1 class="typewriter">Интернет-маркетолог Никита Васильев</h1>
+
+      <section id="about" data-aos="fade-up">
+        <h2>О себе</h2>
+        <p>Опытный интернет-маркетолог с более чем 3-летним стажем. Специализируюсь на привлечении трафика, оптимизации воронок, аналитике и партнёрском маркетинге. Умею стратегически мыслить, работать в команде и масштабировать проекты.</p>
+      </section>
+
+      <section id="experience" data-aos="fade-up" data-aos-delay="100">
+        <h2>Опыт работы</h2>
+
+        <div class="tabs">
+          <button class="tab-button active" data-tab="yamdiet">Трафик-менеджер Yamdiet</button>
+          <button class="tab-button" data-tab="jobforarabists">Digital-маркетолог Job for Arabists</button>
+          <button class="tab-button" data-tab="producer">Продюсер онлайн-школы</button>
+          <button class="tab-button" data-tab="freelance">Таргетолог / Контекстолог (Фриланс)</button>
+        </div>
+
+        <div class="tab-content active" id="yamdiet">
+          <h3>Трафик-менеджер, Компания Yamdiet (Москва и Московская область)</h3>
+          <p><em>Апрель 2024 — Июнь 2025 (1 год 3 месяца)</em></p>
+          <ul>
+            <li>Руководство командой из 8 специалистов с системой KPI (кол-во кампаний, ROI, CAC, конверсия, время реакции, рост клиентской базы).</li>
+            <li>Рост клиентской базы по Москве и МО на 30% благодаря таргетированной рекламе и локальным партнёрствам.</li>
+            <li>Снижение среднего CAC на 15% через оптимизацию каналов и региональный таргетинг.</li>
+            <li>Повышение конверсии лидов в заказы на 12% через A/B тесты лендингов и креативов.</li>
+            <li>Запуск программы лояльности и подписок — рост повторных продаж на 20% за 6 месяцев.</li>
+            <li>Сквозная аналитика с GA4 и Яндекс.Метрикой с разбивкой по регионам, кампаниям, каналам.</li>
+            <li>Активное взаимодействие с SEO для улучшения органического трафика.</li>
+          </ul>
+        </div>
+
+        <div class="tab-content" id="jobforarabists">
+          <h3>Digital-маркетолог, Job for Arabists (Бюро переводов)</h3>
+          <p><em>Май 2023 — Март 2024 (11 месяцев)</em></p>
+          <ul>
+            <li>Разработка и реализация маркетинговой стратегии для увеличения доли рынка в B2B.</li>
+            <li>Внедрение KPI по новым контрактам, среднему чеку, затратам и качеству лидов.</li>
+            <li>Увеличение лидогенерации на 35% за счёт цифровых кампаний (таргетинг, SEO, контент-маркетинг).</li>
+            <li>Автоматизация отчётности и аналитики для ускорения решений руководства.</li>
+          </ul>
+        </div>
+
+        <div class="tab-content" id="producer">
+          <h3>Продюсер онлайн-школы (психология, инфопродукт)</h3>
+          <p><em>Август 2022 — Май 2023 (10 месяцев)</em></p>
+          <ul>
+            <li>Управление полным циклом запуска инфопродуктов: концепция, стратегия, запуск, анализ.</li>
+            <li>Определение и контроль KPI: регистрации, конверсии в оплату, средний чек, ROI рекламных кампаний.</li>
+            <li>Рост выручки на 45% за счёт оптимизации маркетинга и новых каналов продвижения.</li>
+            <li>Настройка вебинаров и автоматизация продаж через CRM и платёжные системы.</li>
+          </ul>
+        </div>
+
+        <div class="tab-content" id="freelance">
+          <h3>Таргетолог / Контекстолог / Директолог (Фриланс)</h3>
+          <p><em>Февраль 2022 — Август 2022 (7 месяцев)</em></p>
+          <ul>
+            <li>Настройка и ведение таргетированной и контекстной рекламы для малого и среднего бизнеса.</li>
+            <li>Оптимизация KPI: CTR, CPC, CPA, ROI.</li>
+            <li>A/B тестирование креативов и посадочных страниц для повышения эффективности.</li>
+            <li>Разработка стратегий рекламных кампаний под разные бизнес-цели.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="skills" data-aos="fade-up" data-aos-delay="200">
+        <h2>Образование</h2>
+        <p><strong>РАНХиГС</strong><br />Факультет управления инновациями в технологической сфере<br />2023–2027 (в процессе)</p>
+
+        <h2>Курсы</h2>
         <ul>
-          <li>Профессиональная настройка и ведение таргетированной рекламы (VK, Facebook, Instagram, Яндекс.Директ, Google Ads)</li>
-          <li>Контекстная реклама с высокой конверсией</li>
-          <li>Аналитика рекламных кампаний и оптимизация бюджета</li>
-          <li>A/B тестирование креативов и посадочных страниц</li>
-          <li>Создание и ведение отчетности для клиентов</li>
-          <li>Работа с Google Analytics, Яндекс.Метрика</li>
-          <li>Управление рекламными аккаунтами и кампаниями</li>
-          <li>Разработка стратегий рекламных кампаний под разные бизнес-цели</li>
+          <li>Интернет-маркетинг — Intelsib</li>
+          <li>Маркетинговые исследования — MAED</li>
+          <li>Таргетированная реклама — Эдуард Мухин</li>
+          <li>Медиапланирование — Филипп Царевский</li>
+          <li><strong>Certified Scrum Master (CSM) — Scrum Alliance</strong></li>
         </ul>
-      </div>
-    </section>
+      </section>
 
-    <section>
-      <h2>Образование</h2>
-      <p><strong>РАНХиГС</strong><br />Факультет управления инновациями в технологической сфере<br />2023–2027 (в процессе)</p>
-    </section>
+      <section data-aos="fade-up" data-aos-delay="300">
+        <h2>Рекомендации</h2>
+        <p>Кристина, HR в Yamdiet<br />📞 8 (952) 020-99-00</p>
+      </section>
 
-    <section>
-      <h2>Курсы</h2>
-      <ul>
-        <li>Интернет-маркетинг — Intelsib</li>
-        <li>Маркетинговые исследования — MAED</li>
-        <li>Таргетированная реклама — Эдуард Мухин</li>
-        <li>Медиапланирование — Филипп Царевский</li>
-      </ul>
-    </section>
+    </main>
+  </div>
 
-    <section>
-      <h2>Рекомендации</h2>
-      <p>Кристина, HR в Yamdiet<br />📞 8 (952) 020-99-00</p>
-    </section>
-  </main>
-</div>
+  <button id="backToTop" title="Наверх">↑</button>
 
-<script>
-  // Плавное появление фото
-  window.addEventListener('load', () => {
-    document.getElementById('avatar').classList.add('visible');
-  });
+  <!-- AOS JS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+  </script>
 
-  // Анимация появления секций при скролле
-  const sections = document.querySelectorAll('.content section');
-  function revealSections() {
-    const triggerBottom = window.innerHeight * 0.85;
-    sections.forEach(section => {
-      const top = section.getBoundingClientRect().top;
-      if (top < triggerBottom) {
-        section.classList.add('visible');
+  <script>
+    // Tabs переключение
+    const buttons = document.querySelectorAll('.tab-button');
+    const contents = document.querySelectorAll('.tab-content');
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        buttons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const tab = btn.getAttribute('data-tab');
+
+        contents.forEach(c => {
+          c.id === tab ? c.classList.add('active') : c.classList.remove('active');
+        });
+      });
+    });
+
+    // Плавная прокрутка навигации
+    document.querySelectorAll('nav a').forEach(anchor => {
+      anchor.addEventListener('click', function(e){
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Кнопка "Наверх"
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if(window.pageYOffset > 300) {
+        backToTop.style.display = 'block';
+      } else {
+        backToTop.style.display = 'none';
       }
     });
-  }
-  window.addEventListener('scroll', revealSections);
-  window.addEventListener('load', revealSections);
-
-  // Вкладки опыта работы
-  const tabs = document.querySelectorAll('.tab-btn');
-  const tabContents = document.querySelectorAll('.tab-content');
-
-  tabs.forEach((tab, idx) => {
-    tab.addEventListener('click', () => {
-      // Сброс активного статуса у всех кнопок и контента
-      tabs.forEach(t => {
-        t.classList.remove('active');
-        t.setAttribute('aria-selected', 'false');
-      });
-      tabContents.forEach(tc => tc.classList.remove('active'));
-
-      // Активировать выбранную вкладку и контент
-      tab.classList.add('active');
-      tab.setAttribute('aria-selected', 'true');
-      tabContents[idx].classList.add('active');
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({top: 0, behavior: 'smooth'});
     });
-  });
-</script>
-
+  </script>
 </body>
 </html>
 
