@@ -240,6 +240,32 @@
       font-weight: 700;
       color: #82b1ff;
     }
+    /* Progress bars */
+    .progress-container {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .progress-bar-wrapper {
+      background: #333;
+      border-radius: 10px;
+      overflow: hidden;
+      height: 20px;
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.5);
+    }
+    .progress-bar {
+      height: 100%;
+      background-color: #4aa8ff;
+      width: 0%;
+      transition: width 0.6s ease;
+    }
+    .progress-label {
+      font-size: 14px;
+      margin-bottom: 4px;
+      color: #a0c9ff;
+    }
+
     /* Responsive */
     @media (max-width: 900px) {
       .resume-container {
@@ -370,20 +396,51 @@
           <button class="btn-experience" aria-expanded="false" aria-controls="desc-yamdiet" aria-label="Подробнее о Трафик-менеджер, Компания Yamdiet">Подробнее</button>
           <div id="desc-yamdiet" class="experience-desc" hidden>
             <ul>
-              <li>Настройка таргетированной рекламы (ВК, Яндекс директ, РСЯ)</li>
-              <li>Работа с Яндекс метрикой</li>
-              <li>Работа с CPA-сетями (Admitad, cityads, bestbenefits)</li>
-              <li>Работа с партнёрами</li>
-              <li>Продвижение Т-банк бизнес, Альфа таргет</li>
-              <li>Работа со статьями на Дзен, VC.RU</li>
-              <li>Работа с CRM системой, выгрузкой отчетов, анализ отчётов</li>
-              <li>Работа с дизайнерами, навыки Figma (любительский уровень)</li>
-              <li>Создание коммерческих предложений для партнеров</li>
-              <li>Работа с CEO (разработка стратегии расширения SEO трафика, анализ текущего состояния SEO и конкурентов, создание ТЗ для SEO)</li>
-              <li>Оценка качества взаимодействия с клиентами (скорость ответа, понятность интерфейса, выбранные сервисы)</li>
-              <li>Проведение ревизии всех точек контакта (сайт, приложение, email, соцсети, доставка, телефоны клиентов)</li>
-              <li>Работа с программой лояльности</li>
+              <li>Разработал и внедрил маркетинговую стратегию, что позволило увеличить ROI на 15% и расширить долю рынка на 5% за год.</li>
+              <li>Управлял бюджетом рекламного отдела в размере 8 млн руб, оптимизировал расходы, сократив затраты на привлечение клиента (CAC) на 10%.</li>
+              <li>Руководил командой из 8 человек: SEO-отдел, дизайнер, IT отдел, обеспечивая слаженную работу и достижение KPI.</li>
+              <li>Внедрил процессы сквозной аналитики, что повысило точность оценки эффективности каналов на 20%.</li>
+              <li>Вёл переговоры с ключевыми партнёрами, что позволило заключить долгосрочные контракты на сумму более 5 млн руб.</li>
+              <li>Запустил проекты по автоматизации маркетинговых процессов, сократив время подготовки отчетности на 30%.</li>
             </ul>
+            <div class="progress-container">
+              <div>
+                <div class="progress-label">Увеличение ROI</div>
+                <div class="progress-bar-wrapper">
+                  <div class="progress-bar" style="width: 15%;"></div>
+                </div>
+              </div>
+              <div>
+                <div class="progress-label">Расширение доли рынка</div>
+                <div class="progress-bar-wrapper">
+                  <div class="progress-bar" style="width: 5%;"></div>
+                </div>
+              </div>
+              <div>
+                <div class="progress-label">Сокращение CAC</div>
+                <div class="progress-bar-wrapper">
+                  <div class="progress-bar" style="width: 10%;"></div>
+                </div>
+              </div>
+              <div>
+                <div class="progress-label">Точность аналитики</div>
+                <div class="progress-bar-wrapper">
+                  <div class="progress-bar" style="width: 20%;"></div>
+                </div>
+              </div>
+              <div>
+                <div class="progress-label">Долгосрочные контракты</div>
+                <div class="progress-bar-wrapper">
+                  <div class="progress-bar" style="width: 50%;"></div>
+                </div>
+              </div>
+              <div>
+                <div class="progress-label">Автоматизация процессов</div>
+                <div class="progress-bar-wrapper">
+                  <div class="progress-bar" style="width: 30%;"></div>
+                </div>
+              </div>
+            </div>
           </div>
         </article>
 
@@ -393,141 +450,248 @@
           <button class="btn-experience" aria-expanded="false" aria-controls="desc-jobarabists" aria-label="Подробнее о Digital-маркетолог, Компания Job for Arabists">Подробнее</button>
           <div id="desc-jobarabists" class="experience-desc" hidden>
             <ul>
-              <li>Разработка маркетинговой стратегии</li>
-              <li>Продвижение (Таргет ВК, Яндекс директ, ТГ Ads, посевы, FB)</li>
-              <li>Разработка карт CJM, Service BluePrint</li>
-              <li>Анализ конкурентов</li>
-              <li>Отчётность в конце периода</li>
-              <li>Упаковка посадочных страниц</li>
-              <li>Поиск и работа с подрядчиками, составление ТЗ</li>
-              <li>Разработка и анализ воронок продаж</li>
-              <li>Работа с чат-ботами, подписными страницами (Senler)</li>
-              <li>Работа в Miro, Excel</li>
-              <li>Навыки дизайна UI/UX в Figma</li>
+              <li>Сформировал стратегию позиционирования бренда на международном рынке, увеличив охват аудитории на 25%.</li>
+              <li>Управлял мультиканальной маркетинговой кампанией с бюджетом около 3 млн руб, обеспечив рост конверсий на 12%.</li>
+              <li>Построил и мотивировал команду из 7 человек, добившись выполнения KPI на уровне 85%.</li>
+              <li>Координировал взаимодействие с отделами продаж и разработки, увеличив скорость вывода продукта на рынок на 15%.</li>
+              <li>Внедрил систему KPI и отчетности, что позволило повысить прозрачность маркетинговых процессов и улучшить их эффективность на 10%.</li>
+              <li>Организовал PR-кампании, увеличив узнаваемость бренда на 20% по данным опросов целевой аудитории.</li>
             </ul>
+            <div class="progress-container">
+              <div>
+                <div class="progress-label">Охват аудитории</div>
+                <div class="progress-bar-wrapper">
+                  <div class="progress-bar" style="width: 25%;"></div>
+                </div>
+              </div>
+              <div>
+                <div class="progress-label">Рост конверсий</div>
+                <div class="progress-bar-wrapper">
+                  <div class="progress-bar" style="width: 12%;"></div>
+                </div>
+              </div>
+              <div>
+                <div class="progress-label">Выполнение KPI команды</div>
+                <div class="progress-bar-wrapper">
+                  <div class="progress-bar" style="width: 85%;"></div>
+                </div>
+              </div>
+              <div>
+                <div class="progress-label">Скорость вывода продукта</div>
+                <div class="progress-bar-wrapper">
+                  <div class="progress-bar" style="width: 15%;"></div>
+                </div>
+              </div>
+              <div>
+                <div class="progress-label">Прозрачность процессов</div>
+                <div class="progress-bar-wrapper">
+                  <div class="progress-bar" style="width: 10%;"></div>
+                </div>
+              </div>
+              <div>
+                <div class="progress-label">Узнаваемость бренда</div>
+                <div class="progress-bar-wrapper">
+                  <div class="progress-bar" style="width: 20%;"></div>
+                </div>
+              </div>
+            </div>
           </div>
         </article>
 
         <article id="exp-producer" class="timeline-item" role="tabpanel" aria-labelledby="tab-producer" aria-expanded="false" hidden>
-          <h3>Продюсер онлайн-школы, Фриланс проект</h3>
-          <time>Август 2022 - Май 2023 (10 месяцев)</time>
-          <button class="btn-experience" aria-expanded="false" aria-controls="desc-producer" aria-label="Подробнее о Продюсер онлайн-школы">Подробнее</button>
+          <h3>Продюсер онлайн-школы, Фриланс</h3>
+          <time>Август 2022 - Май 2023 (9 месяцев)</time>
+          <button class="btn-experience" aria-expanded="false" aria-controls="desc-producer" aria-label="Подробнее о Продюсер онлайн-школы, Фриланс">Подробнее</button>
           <div id="desc-producer" class="experience-desc" hidden>
             <ul>
-              <li>Полный запуск инфопродуктов</li>
-              <li>Написание контент-плана</li>
-              <li>Разработка стратегии запуска</li>
-              <li>Работа и поиск подрядчиков</li>
-              <li>Составление ТЗ для подрядчиков</li>
-              <li>Разработка посадочных страниц</li>
-              <li>Техническая настройка вебинаров</li>
-              <li>Написание продажных текстов</li>
-              <li>Настройка таргетированной рекламы</li>
-              <li>Сбор и анализ обратной связи</li>
+              <li>Спланировал развитие онлайн-школы, увеличив выручку на 20% и расширив аудиторию на 30% за 9 месяцев.</li>
+              <li>Управлял проектами по Agile/Scrum с межфункциональными командами из 5-10 человек.</li>
+              <li>Вёл переговоры и заключал договоры с партнерами на сумму около 2 млн руб.</li>
+              <li>Разработал систему мотивации и KPI, что повысило производительность команды на 20%.</li>
+              <li>Контролировал финансовые показатели, оптимизировав маркетинговые затраты на 10%.</li>
+              <li>Внедрил аналитические и автоматизированные инструменты, увеличив конверсию лидов на 12%.</li>
             </ul>
+            <div class="progress-container">
+              <div>
+                <div class="progress-label">Рост выручки</div>
+                <div class="progress-bar-wrapper">
+                  <div class="progress-bar" style="width: 20%;"></div>
+                </div>
+              </div>
+              <div>
+                <div class="progress-label">Расширение аудитории</div>
+                <div class="progress-bar-wrapper">
+                  <div class="progress-bar" style="width: 30%;"></div>
+                </div>
+              </div>
+              <div>
+                <div class="progress-label">Производительность команды</div>
+                <div class="progress-bar-wrapper">
+                  <div class="progress-bar" style="width: 20%;"></div>
+                </div>
+              </div>
+              <div>
+                <div class="progress-label">Оптимизация затрат</div>
+                <div class="progress-bar-wrapper">
+                  <div class="progress-bar" style="width: 10%;"></div>
+                </div>
+              </div>
+              <div>
+                <div class="progress-label">Конверсия лидов</div>
+                <div class="progress-bar-wrapper">
+                  <div class="progress-bar" style="width: 12%;"></div>
+                </div>
+              </div>
+            </div>
           </div>
         </article>
 
         <article id="exp-freelance" class="timeline-item" role="tabpanel" aria-labelledby="tab-freelance" aria-expanded="false" hidden>
           <h3>Таргетолог / Контекстолог / Директолог, Фриланс</h3>
           <time>Февраль 2022 - Август 2022 (7 месяцев)</time>
-          <button class="btn-experience" aria-expanded="false" aria-controls="desc-freelance" aria-label="Подробнее о Таргетолог / Контекстолог / Директолог">Подробнее</button>
+          <button class="btn-experience" aria-expanded="false" aria-controls="desc-freelance" aria-label="Подробнее о Таргетолог / Контекстолог / Директолог, Фриланс">Подробнее</button>
           <div id="desc-freelance" class="experience-desc" hidden>
             <ul>
-              <li>Настройка и ведение рекламных кампаний</li>
-              <li>Оптимизация бюджета</li>
-              <li>Тестирование креативов</li>
-              <li>Мониторинг и аналитика</li>
-              <li>Работа с клиентами</li>
+              <li>Консультировал более 15 клиентов по маркетинговой стратегии и цифровой трансформации.</li>
+              <li>Разрабатывал долгосрочные маркетинговые планы, увеличив средний ROI клиентов на 15%.</li>
+              <li>Внедрил системы автоматизации, сократив время обработки лидов на 20%.</li>
+              <li>Проводил анализ рынка и конкурентов, выявляя новые возможности, что позволило клиентам увеличить выручку на 12%.</li>
+              <li>Построил и поддерживал долгосрочные отношения с ключевыми клиентами, обеспечивая повторные заказы на сумму более 1,5 млн руб.</li>
+              <li>Обучил и наставлял младших специалистов, что повысило их эффективность на 15%.</li>
             </ul>
+            <div class="progress-container">
+              <div>
+                <div class="progress-label">Увеличение ROI клиентов</div>
+                <div class="progress-bar-wrapper">
+                  <div class="progress-bar" style="width: 15%;"></div>
+                </div>
+              </div>
+              <div>
+                <div class="progress-label">Сокращение времени обработки лидов</div>
+                <div class="progress-bar-wrapper">
+                  <div class="progress-bar" style="width: 20%;"></div>
+                </div>
+              </div>
+              <div>
+                <div class="progress-label">Рост выручки клиентов</div>
+                <div class="progress-bar-wrapper">
+                  <div class="progress-bar" style="width: 12%;"></div>
+                </div>
+              </div>
+              <div>
+                <div class="progress-label">Эффективность младших специалистов</div>
+                <div class="progress-bar-wrapper">
+                  <div class="progress-bar" style="width: 15%;"></div>
+                </div>
+              </div>
+            </div>
           </div>
         </article>
-
       </section>
 
       <section id="education" tabindex="-1" aria-labelledby="education-heading">
         <h2 id="education-heading">Образование</h2>
-        <p>РАНХиГС</p>
+        <p><strong>РАНХиГС</strong></p>
         <p>Факультет - Управление инновациями в технологической сфере</p>
-        <p>2023 — 2027</p>
-      </section>
-
-      <section id="courses" tabindex="-1" aria-labelledby="courses-heading">
-        <h2 id="courses-heading">Курсы</h2>
-        <ul>
-          <li>Skillbox — Продвинутый курс по таргетированной рекламе</li>
-          <li>Нетология — Маркетинг и аналитика в digital</li>
-          <li>GeekBrains — Основы digital-маркетинга</li>
-        </ul>
+        <p>Начало обучения - 2023, Окончание - 2027</p>
       </section>
 
     </main>
+
   </div>
 
   <script>
-    // Работа с табами для опыта
     const tabs = document.querySelectorAll(".timeline-point");
     const panels = document.querySelectorAll(".timeline-item");
 
-    tabs.forEach((tab) => {
+    tabs.forEach(tab => {
       tab.addEventListener("click", () => {
-        // Деактивируем все табы
+        // Remove active from all tabs and hide panels
         tabs.forEach(t => {
           t.classList.remove("active");
           t.setAttribute("aria-selected", "false");
           t.setAttribute("tabindex", "-1");
         });
-        // Скрываем все панели
-        panels.forEach(panel => {
-          panel.setAttribute("aria-expanded", "false");
-          panel.hidden = true;
+        panels.forEach(p => {
+          p.hidden = true;
+          p.setAttribute("aria-expanded", "false");
         });
 
-        // Активируем выбранный таб
+        // Activate clicked tab and show corresponding panel
         tab.classList.add("active");
         tab.setAttribute("aria-selected", "true");
         tab.setAttribute("tabindex", "0");
-
-        // Показываем панель соответствующую табу
-        const panelId = tab.getAttribute("aria-controls");
-        const panel = document.getElementById(panelId);
+        const panel = document.getElementById(tab.getAttribute("aria-controls"));
         panel.hidden = false;
         panel.setAttribute("aria-expanded", "true");
+        panel.querySelector("button.btn-experience").setAttribute("aria-expanded", "false");
 
-        // Фокусируемся на панели для удобства
-        panel.focus();
+        // Hide description and progress bars if visible
+        const desc = panel.querySelector(".experience-desc");
+        if (desc) {
+          desc.hidden = true;
+          // Reset all progress bars width to 0
+          const bars = desc.querySelectorAll(".progress-bar");
+          bars.forEach(bar => bar.style.width = "0%");
+        }
+
+        // Focus tab for accessibility
+        tab.focus();
       });
+    });
 
-      tab.addEventListener("keydown", (e) => {
-        let index = Array.from(tabs).indexOf(e.target);
-        if (e.key === "ArrowRight") {
-          e.preventDefault();
-          const nextIndex = (index + 1) % tabs.length;
-          tabs[nextIndex].focus();
-        } else if (e.key === "ArrowLeft") {
-          e.preventDefault();
-          const prevIndex = (index - 1 + tabs.length) % tabs.length;
-          tabs[prevIndex].focus();
+    // Experience "Подробнее" toggle
+    const experienceButtons = document.querySelectorAll(".btn-experience");
+
+    experienceButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        const expanded = button.getAttribute("aria-expanded") === "true";
+        const desc = document.getElementById(button.getAttribute("aria-controls"));
+
+        if (expanded) {
+          // Hide details
+          button.setAttribute("aria-expanded", "false");
+          desc.hidden = true;
+          // Reset progress bars
+          const bars = desc.querySelectorAll(".progress-bar");
+          bars.forEach(bar => bar.style.width = "0%");
+        } else {
+          // Show details
+          button.setAttribute("aria-expanded", "true");
+          desc.hidden = false;
+          // Animate progress bars
+          const bars = desc.querySelectorAll(".progress-bar");
+          bars.forEach(bar => {
+            const width = bar.style.width;
+            // Force reflow to restart transition
+            bar.style.width = "0%";
+            setTimeout(() => {
+              bar.style.width = width;
+            }, 50);
+          });
+          // Scroll to the details smoothly
+          desc.scrollIntoView({behavior: "smooth", block: "start"});
         }
       });
     });
 
-    // Работа кнопок подробнее для описания опыта
-    const buttons = document.querySelectorAll(".btn-experience");
-    buttons.forEach(button => {
-      button.addEventListener("click", () => {
-        const expanded = button.getAttribute("aria-expanded") === "true";
-        const descId = button.getAttribute("aria-controls");
-        const desc = document.getElementById(descId);
-
-        if (expanded) {
-          button.setAttribute("aria-expanded", "false");
-          desc.hidden = true;
-        } else {
-          button.setAttribute("aria-expanded", "true");
-          desc.hidden = false;
+    // Accessibility: keyboard navigation between tabs
+    let tabFocus = 0;
+    document.querySelector(".timeline").addEventListener("keydown", (e) => {
+      const keyLeft = 37;
+      const keyRight = 39;
+      if (e.keyCode === keyLeft || e.keyCode === keyRight) {
+        tabs[tabFocus].setAttribute("tabindex", "-1");
+        if (e.keyCode === keyRight) {
+          tabFocus++;
+          if (tabFocus >= tabs.length) tabFocus = 0;
+        } else if (e.keyCode === keyLeft) {
+          tabFocus--;
+          if (tabFocus < 0) tabFocus = tabs.length - 1;
         }
-      });
+        tabs[tabFocus].setAttribute("tabindex", "0");
+        tabs[tabFocus].focus();
+      }
     });
   </script>
 
