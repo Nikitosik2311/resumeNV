@@ -1,328 +1,311 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Никита Васильев — Интернет-маркетолог</title>
-  <style>
-    :root {
-      --bg-light: #f4f6f8;
-      --bg-dark: #1c1c1c;
-      --card-light: #fff;
-      --card-dark: #2a2a2a;
-      --text-light: #333;
-      --text-dark: #f0f0f0;
-      --accent: #305fcf;
-      --accent-light: #ffce54;
-    }
-    body {
-      font-family: 'Segoe UI', Tahoma, sans-serif;
-      background: var(--bg-light);
-      color: var(--text-light);
-      line-height: 1.6;
-      scroll-behavior: smooth;
-      transition: background 0.4s, color 0.4s;
-    }
-    body.dark {
-      background: var(--bg-dark);
-      color: var(--text-dark);
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Никита Васильев — Интернет-маркетолог</title>
+<style>
+  /* Сброс */
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #e3eafc, #c5d0f9);
+    color: #222;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 20px;
+  }
+  .resume-container {
+    background: rgba(255 255 255 / 0.85);
+    max-width: 1000px;
+    width: 100%;
+    display: flex;
+    border-radius: 14px;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+    overflow: hidden;
+    backdrop-filter: saturate(180%) blur(18px);
+    -webkit-backdrop-filter: saturate(180%) blur(18px);
+    animation: fadeInUp 1s ease forwards;
+  }
+
+  /* Левая колонка */
+  .sidebar {
+    background: #1f3c88;
+    color: white;
+    padding: 40px 30px;
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .sidebar img.avatar {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border: 3px solid #fff;
+    border-radius: 6px; /* строгое, не круг */
+    box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+    margin-bottom: 25px;
+    animation: popIn 0.8s ease forwards;
+    opacity: 0;
+  }
+  .sidebar img.avatar.visible {
+    opacity: 1;
+  }
+  .sidebar h1 {
+    font-size: 28px;
+    margin: 0 0 6px;
+    font-weight: 700;
+    text-align: center;
+  }
+  .sidebar p.title {
+    margin: 0 0 30px;
+    font-size: 18px;
+    font-weight: 500;
+    opacity: 0.85;
+    text-align: center;
+  }
+  .sidebar h2 {
+    font-weight: 600;
+    font-size: 16px;
+    border-bottom: 1px solid rgba(255 255 255 / 0.4);
+    width: 100%;
+    padding-bottom: 6px;
+    margin-bottom: 14px;
+  }
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px;
+    width: 100%;
+  }
+  .sidebar ul li {
+    margin-bottom: 10px;
+    font-weight: 500;
+    font-size: 14.5px;
+  }
+  .sidebar p.salary,
+  .sidebar p.job-type {
+    font-weight: 600;
+    font-size: 15px;
+    margin: 6px 0 15px;
+  }
+
+  /* Правая колонка */
+  .content {
+    flex-grow: 1;
+    background: rgba(255 255 255 / 0.9);
+    padding: 40px 50px;
+    overflow-y: auto;
+  }
+  .content section {
+    margin-bottom: 40px;
+    opacity: 0;
+    transform: translateY(25px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .content section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .content h2 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #1f3c88;
+    border-bottom: 2px solid #1f3c88;
+    padding-bottom: 6px;
+  }
+  .content h3 {
+    font-size: 18px;
+    margin: 0 0 8px;
+    font-weight: 600;
+    color: #333;
+  }
+  .content p {
+    font-size: 15px;
+    line-height: 1.55;
+    margin: 8px 0 15px;
+  }
+  .content ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0 0 15px 0;
+  }
+  .content ul li {
+    margin-bottom: 9px;
+    font-weight: 500;
+    font-size: 15px;
+  }
+
+  /* Кнопка скачать */
+  .download-btn {
+    display: inline-block;
+    padding: 10px 18px;
+    background-color: #1f3c88;
+    color: white;
+    font-weight: 600;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    margin-bottom: 30px;
+  }
+  .download-btn:hover {
+    background-color: #3b5cd1;
+  }
+
+  /* Анимации */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px);}
+    to { opacity: 1; transform: translateY(0);}
+  }
+  @keyframes popIn {
+    from { opacity: 0; transform: scale(0.8);}
+    to { opacity: 1; transform: scale(1);}
+  }
+
+  /* Адаптив */
+  @media(max-width: 850px){
     .resume-container {
-      display: grid;
-      grid-template-columns: 300px 1fr;
-      max-width: 1100px;
-      margin: 30px auto;
-      background: var(--card-light);
-      box-shadow: 0 6px 25px rgba(0,0,0,0.08);
-      border-radius: 12px;
-      overflow: hidden;
-      animation: fadeIn 1s ease-in-out;
-      transition: background 0.4s;
-    }
-    body.dark .resume-container {
-      background: var(--card-dark);
-      box-shadow: 0 6px 25px rgba(255,255,255,0.05);
-    }
-    /* Левая колонка */
-    .sidebar {
-      background: linear-gradient(180deg, #1f3c88, var(--accent));
-      color: white;
-      padding: 25px;
-      display: flex;
       flex-direction: column;
+      max-width: 95vw;
+      margin: 20px auto;
+    }
+    .sidebar {
+      width: 100%;
+      padding: 25px 20px 30px;
+      flex-direction: row;
       align-items: center;
+      justify-content: flex-start;
+      gap: 20px;
     }
-    .avatar {
-      width: 130px;
-      height: 130px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 15px;
-      border: 3px solid rgba(255,255,255,0.7);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-      animation: popIn 0.8s ease;
+    .sidebar img.avatar {
+      width: 110px;
+      height: 110px;
+      border-radius: 6px;
+      margin-bottom: 0;
     }
-    .avatar:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+    .sidebar h1, .sidebar p.title {
+      text-align: left;
+      margin: 0;
     }
-    .name {
-      font-size: 1.5rem;
-      font-weight: bold;
-      text-align: center;
+    .sidebar h1 {
+      font-size: 24px;
     }
-    .title {
-      font-size: 1rem;
-      opacity: 0.9;
-      margin-bottom: 20px;
-      text-align: center;
+    .sidebar p.title {
+      font-size: 14px;
+      opacity: 0.8;
     }
+    .sidebar section,
+    .sidebar ul,
+    .sidebar p.salary,
+    .sidebar p.job-type,
     .sidebar h2 {
-      font-size: 1.1rem;
-      margin: 18px 0 10px;
-      border-bottom: 1px solid rgba(255,255,255,0.3);
-      padding-bottom: 4px;
-      width: 100%;
+      display: none; /* скрываем контакты и все остальное в мобилке для лаконичности */
     }
-    .sidebar ul {
-      list-style: none;
-      margin-bottom: 15px;
-      width: 100%;
-    }
-    .sidebar li {
-      margin-bottom: 8px;
-      font-size: 0.95rem;
-    }
-    .sidebar p {
-      margin-bottom: 8px;
-      font-size: 0.95rem;
-    }
-    /* Кнопки соцсетей */
-    .social-links {
-      display: flex;
-      gap: 10px;
-      margin-top: 15px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .social-links a {
-      text-decoration: none;
-      background: white;
-      color: var(--accent);
-      padding: 8px 12px;
-      border-radius: 6px;
-      font-size: 0.9rem;
-      font-weight: bold;
-      transition: background 0.3s, color 0.3s, transform 0.3s;
-    }
-    .social-links a:hover {
-      background: var(--accent-light);
-      color: var(--accent);
-      transform: translateY(-2px);
-    }
-    /* Правая колонка */
     .content {
-      padding: 30px;
-    }
-    .content section {
-      margin-bottom: 25px;
-      background: var(--card-light);
-      border-radius: 8px;
       padding: 20px;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.05);
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.6s ease, background 0.4s, color 0.4s;
     }
-    body.dark .content section {
-      background: var(--card-dark);
-      box-shadow: 0 3px 12px rgba(255,255,255,0.05);
-    }
-    .content section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .content h2 {
-      font-size: 1.4rem;
-      margin-bottom: 10px;
-      color: var(--accent);
-    }
-    .content ul {
-      margin-left: 18px;
-      margin-bottom: 15px;
-    }
-    .content h3 {
-      font-size: 1.1rem;
-      color: var(--accent);
-      margin-bottom: 5px;
-    }
-    /* Кнопка переключателя темы */
-    .theme-toggle {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: var(--accent);
-      color: white;
-      padding: 8px 14px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: background 0.3s;
-      z-index: 999;
-    }
-    .theme-toggle:hover {
-      background: var(--accent-light);
-      color: var(--accent);
-    }
-    /* Анимации */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes popIn {
-      from { transform: scale(0.8); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
-    @media (max-width: 768px) {
-      .resume-container {
-        grid-template-columns: 1fr;
-      }
-      .sidebar {
-        text-align: center;
-      }
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
 
-  <button class="theme-toggle" onclick="toggleTheme()">🌙 Тема</button>
+<div class="resume-container">
 
-  <div class="resume-container">
-
-    <!-- Левая колонка -->
-    <aside class="sidebar">
-      <img src="avatar.png" alt="Фото Никиты Васильева" class="avatar" />
-      <h1 class="name">Никита Васильев</h1>
+  <!-- Левая колонка -->
+  <aside class="sidebar">
+    <img src="avatar.png" alt="Фото Никиты Васильева" class="avatar" id="avatar" />
+    <div>
+      <h1>Никита Васильев</h1>
       <p class="title">Интернет-маркетолог</p>
+    </div>
 
-      <section>
-        <h2>Контакты</h2>
-        <ul class="contact-list">
-          <li>📞 8-(985)-422-97-39</li>
-          <li>📧 Vasilevnik05@mail.ru</li>
-          <li>💬 @Vasilieeev11</li>
-          <li>📍 Москва</li>
-        </ul>
-        <p>💰 От 80 000 руб</p>
-        <p>🕒 Fulltime / удалёнка</p>
-      </section>
+    <section>
+      <h2>Контакты</h2>
+      <ul>
+        <li>📞 8-(985)-422-97-39</li>
+        <li>📧 Vasilevnik05@mail.ru</li>
+        <li>💬 @Vasilieeev11</li>
+        <li>📍 Москва</li>
+      </ul>
+      <p class="salary">💰 От 80 000 руб</p>
+      <p class="job-type">🕒 Fulltime / удалёнка</p>
+    </section>
+  </aside>
 
-      <div class="social-links">
-        <a href="https://vk.com" target="_blank">VK</a>
-        <a href="https://t.me" target="_blank">Telegram</a>
-        <a href="mailto:Vasilevnik05@mail.ru">Email</a>
-      </div>
+  <!-- Правая колонка -->
+  <main class="content">
+    <!--
+    <a href="resume.pdf" download class="download-btn" aria-label="Скачать резюме в PDF">⬇ Скачать PDF</a>
+    -->
 
-      <section>
-        <h2>Языки</h2>
-        <p>Английский — B1</p>
-      </section>
+    <section>
+      <h2>О себе</h2>
+      <p>Опытный интернет-маркетолог с более чем 3-летним стажем. Специализируюсь на привлечении трафика, оптимизации воронок, аналитике и партнёрском маркетинге. Умею стратегически мыслить, работать в команде и масштабировать проекты.</p>
+    </section>
 
-      <section>
-        <h2>Навыки</h2>
-        <ul>
-          <li>Таргетированная реклама (VK, Яндекс, Telegram)</li>
-          <li>Яндекс.Метрика, GA4</li>
-          <li>Работа с CPA-сетями</li>
-          <li>Контент-маркетинг</li>
-          <li>CRM: Bitrix24, AmoCRM, HubSpot</li>
-          <li>Figma</li>
-          <li>Коммерческие предложения</li>
-          <li>Программы лояльности</li>
-        </ul>
-      </section>
+    <section>
+      <h2>Опыт работы</h2>
+      <h3>Интернет-маркетолог / Специалист по трафику</h3>
+      <p>2021 — настоящее время</p>
+      <ul>
+        <li>Настройка и ведение рекламных кампаний (VK, Яндекс, Telegram)</li>
+        <li>Работа с CPA-сетями (Admitad, Cityads, BestBenefits)</li>
+        <li>Аналитика поведения пользователей, A/B тесты, улучшение конверсии</li>
+        <li>Оптимизация бюджета, повышение ROI</li>
+        <li>Управление командой из 8 человек</li>
+      </ul>
+    </section>
 
-      <section>
-        <h2>Качества</h2>
-        <ul>
-          <li>Стратегическое мышление</li>
-          <li>Ответственность</li>
-          <li>Коммуникабельность</li>
-          <li>Управление командой</li>
-        </ul>
-      </section>
+    <section>
+      <h2>Образование</h2>
+      <p><strong>РАНХиГС</strong><br />Факультет управления инновациями в технологической сфере<br />2023–2027 (в процессе)</p>
+    </section>
 
-      <section>
-        <h2>Хобби</h2>
-        <p>Спортзал, чтение книг</p>
-      </section>
-    </aside>
+    <section>
+      <h2>Курсы</h2>
+      <ul>
+        <li>Интернет-маркетинг — Intelsib</li>
+        <li>Маркетинговые исследования — MAED</li>
+        <li>Таргетированная реклама — Эдуард Мухин</li>
+        <li>Медиапланирование — Филипп Царевский</li>
+      </ul>
+    </section>
 
-    <!-- Правая колонка -->
-    <main class="content">
-      <section>
-        <h2>О себе</h2>
-        <p>Опытный интернет-маркетолог с более чем 3-летним стажем. Специализируюсь на привлечении трафика, оптимизации воронок, аналитике и партнёрском маркетинге.</p>
-      </section>
+    <section>
+      <h2>Рекомендации</h2>
+      <p>Кристина, HR в Yamdiet<br />📞 8 (952) 020-99-00</p>
+    </section>
+  </main>
+</div>
 
-      <section>
-        <h2>Опыт работы</h2>
-        <h3>Интернет-маркетолог / Специалист по трафику</h3>
-        <p>2021 — настоящее время</p>
-        <ul>
-          <li>Настройка и ведение рекламных кампаний</li>
-          <li>Работа с CPA-сетями</li>
-          <li>Аналитика, A/B тесты, улучшение конверсии</li>
-          <li>Оптимизация бюджета</li>
-          <li>Управление командой</li>
-        </ul>
-      </section>
+<script>
+  // Плавное появление фото
+  window.addEventListener('load', () => {
+    document.getElementById('avatar').classList.add('visible');
+  });
 
-      <section>
-        <h2>Образование</h2>
-        <p><strong>РАНХиГС</strong><br />Факультет управления инновациями<br />2023–2027 (в процессе)</p>
-      </section>
-
-      <section>
-        <h2>Курсы</h2>
-        <ul>
-          <li>Интернет-маркетинг — Intelsib</li>
-          <li>Маркетинговые исследования — MAED</li>
-          <li>Таргетированная реклама — Эдуард Мухин</li>
-          <li>Медиапланирование — Филипп Царевский</li>
-        </ul>
-      </section>
-
-      <section>
-        <h2>Рекомендации</h2>
-        <p>Кристина, HR в Yamdiet<br />📞 8 (952) 020-99-00</p>
-      </section>
-    </main>
-
-  </div>
-
-  <script>
-    // Анимация появления секций при скролле
-    const sections = document.querySelectorAll('.content section');
-    function revealSections() {
-      const triggerBottom = window.innerHeight * 0.85;
-      sections.forEach(sec => {
-        const secTop = sec.getBoundingClientRect().top;
-        if (secTop < triggerBottom) {
-          sec.classList.add('visible');
-        }
-      });
-    }
-    window.addEventListener('scroll', revealSections);
-    window.addEventListener('load', revealSections);
-
-    // Переключение темы
-    function toggleTheme() {
-      document.body.classList.toggle('dark');
-    }
-  </script>
+  // Анимация появления секций при скролле
+  const sections = document.querySelectorAll('.content section');
+  function revealSections() {
+    const triggerBottom = window.innerHeight * 0.85;
+    sections.forEach(section => {
+      const top = section.getBoundingClientRect().top;
+      if (top < triggerBottom) {
+        section.classList.add('visible');
+      }
+    });
+  }
+  window.addEventListener('scroll', revealSections);
+  window.addEventListener('load', revealSections);
+</script>
 
 </body>
 </html>
+
